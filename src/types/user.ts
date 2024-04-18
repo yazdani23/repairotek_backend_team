@@ -1,14 +1,14 @@
-// Define the roles enum
-const userRoles = ["ADMIN", "MODERATOR", "USER"] as const;
-type UserRole = (typeof userRoles)[number];
+import { Document, Schema } from "mongoose";
 
-interface UserDoc extends Document {
-  username: string;
+export interface UserDoc extends Document {
+  usercode:number;
+  firstname: string;
+  lastname: string;
   email: string;
-  password: string;
-  term: boolean;
-  role: UserRole;
+  website: string;
+  address: string;
+  telephone: number;
+  mobile: number;
+  profilephoto: string; // Assuming profile photo is stored as a string (URL or file path)
+  role: Schema.Types.ObjectId[]; // Array of role ObjectIds
 }
-
-
-export { userRoles, UserDoc };
