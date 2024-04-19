@@ -12,7 +12,7 @@ const zoneSchema = new Schema<ZoneDoc>(
     longitude: { type: Number, required: true },
     latitude: { type: Number, required: true },
     description: { type: String },
-    province: [
+    provinceid: [
       { type: Schema.Types.ObjectId, ref: "Province", required: true },
     ],
   },

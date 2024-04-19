@@ -9,10 +9,10 @@ const userSchema = new Schema<UserDoc>(
     email: { type: String, required: true },
     website: { type: String },
     address: { type: String },
-    telephone: { type: Number },
-    mobile: { type: Number },
+    telephone: { type: String},
+    mobile: { type: Number , required: true},
     profilephoto: { type: String },
-    role: [{ type: Schema.Types.ObjectId, ref: "Role",required: true }
+    roleid: [{ type: Schema.Types.ObjectId, ref: "Role",required: true }
     ],
   },
   { timestamps: true }

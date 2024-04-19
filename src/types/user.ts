@@ -7,8 +7,8 @@ export interface UserDoc extends Document {
   email: string;
   website: string;
   address: string;
-  telephone: number;
+  telephone: string;
   mobile: number;
   profilephoto: string; // Assuming profile photo is stored as a string (URL or file path)
-  role: Schema.Types.ObjectId[]; // Array of role ObjectIds
+  roleid: Schema.Types.ObjectId; // Array of role ObjectIds
 }

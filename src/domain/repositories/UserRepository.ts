@@ -1,5 +1,5 @@
 import { UserDoc } from "../../types/user";
-import User from "../models/User";
+import {User} from "../models/User";
 
 class UserRepository {
 

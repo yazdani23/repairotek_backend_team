@@ -2,7 +2,7 @@ import { Document, Schema } from "mongoose";
 
 export interface ZoneDoc extends Document {
   name: string;
-  province: Schema.Types.ObjectId; // Array of role ObjectIds
+  provinceid: Schema.Types.ObjectId; // Array of province ObjectIds
   state: string;
   roadway: string;
   ipaddress: string;
