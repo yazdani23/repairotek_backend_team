@@ -4,11 +4,11 @@ import { ProjectGalleryDoc } from "../../types/projectGallery"
 
 const projectGallerySchema = new Schema<ProjectGalleryDoc>(
   {
-   projectid: {type:Schema.Types.ObjectId, required: true},
-  employeeid: {type:Schema.Types.ObjectId, required: true},
+   projectId: {type:Schema.Types.ObjectId, required: true},
+  employeeId: {type:Schema.Types.ObjectId, required: true},
   media: { type: String, required: true },
-  mediadatetime: { type: String, required: true },
-  mediasubjectid: {type:Schema.Types.ObjectId, required: true},
+  mediaDateTime: { type: String, required: true },
+  mediaSubjectId: {type:Schema.Types.ObjectId, required: true},
   location:  { type: String, required: true }, 
   description:  { type: String},
   },

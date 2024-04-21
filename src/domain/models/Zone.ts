@@ -6,13 +6,13 @@ const zoneSchema = new Schema<ZoneDoc>(
   {
     name: { type: String, required: true },
     state: { type: String, required: true },
-    roadway: { type: String, required: true },
-    ipaddress: { type: String, required: true },
-    timezone: { type: String, required: true }, //---- Todo Change type to String
+    roadWay: { type: String, required: true },
+    ipAddress: { type: String, required: true },
+    timeZone: { type: String, required: true }, //---- Todo Change type to String
     longitude: { type: Number, required: true },
     latitude: { type: Number, required: true },
     description: { type: String },
-    provinceid: [
+    provinceId: [
       { type: Schema.Types.ObjectId, ref: "Province", required: true },
     ],
   },

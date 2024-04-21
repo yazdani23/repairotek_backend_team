@@ -5,7 +5,7 @@ import { RoleDoc } from "../../types/role";
 const roleSchema = new Schema<RoleDoc>(
   {
     name: { type: String, required: true },
-    roletype: { type: String, required: true },
+    roleType: { type: String, required: true },
   },
   { timestamps: true }
 );

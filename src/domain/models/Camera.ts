@@ -4,9 +4,9 @@ import { CameraDoc } from "../../types/camera";
 
 const cameraSchema = new Schema<CameraDoc>(
   {
-    modelname: { type: String, required: true },
-    cameraip: { type: String, required: true },
-    cameraspecification: { type: String}
+    modelName: { type: String, required: true },
+    cameraIp: { type: String, required: true },
+    cameraSpecification: { type: String}
   },
   { timestamps: true }
 );

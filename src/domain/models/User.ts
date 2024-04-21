@@ -3,16 +3,16 @@ import { UserDoc } from "../../types/user";
 
 const userSchema = new Schema<UserDoc>(
   {
-    usercode: { type: Number, required: true },
-    firstname: { type: String, required: true },
-    lastname: { type: String, required: true },
+    userCode: { type: Number, required: true },
+    firstName: { type: String, required: true },
+    lastName: { type: String, required: true },
     email: { type: String, required: true },
-    website: { type: String },
+    webSite: { type: String },
     address: { type: String },
     telephone: { type: String},
     mobile: { type: Number , required: true},
-    profilephoto: { type: String },
-    roleid: [{ type: Schema.Types.ObjectId, ref: "Role",required: true }
+    profilePhoto: { type: String },
+    roleId: [{ type: Schema.Types.ObjectId, ref: "Role",required: true }
     ],
   },
   { timestamps: true }

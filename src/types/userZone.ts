@@ -1,6 +1,6 @@
 import { Document, Schema } from "mongoose";
 
 export interface UserZoneDoc extends Document {
-  userid: Schema.Types.ObjectId;
-  zoneid: Schema.Types.ObjectId;
+  userId: Schema.Types.ObjectId;
+  zoneId: Schema.Types.ObjectId;
 }

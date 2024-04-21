@@ -8,19 +8,19 @@ enum Gender {
 }
 
 export interface EmployeeDoc extends Document {
-  employeecode: number;
+  employeeCode: number;
   // projects: ProjectDoc; // Array of project Object
   gender: Gender;
-  firstname: string;
-  lastname: string;
+  firstName: string;
+  lastName: string;
   telephone: string;
   mobile: string; // Changed to string to support international phone numbers
   email: string;
   address: string;
-  profilephoto: string; // Assuming profile photo is stored as a string (URL or file path)
-  hiredate: Date; // Date
-  jobid: Schema.Types.ObjectId; // Array of job ObjectIds
-  departmentid: Schema.Types.ObjectId; // Array of department ObjectIds
-  skilldescription: string;
+  profilePhoto: string; // Assuming profile photo is stored as a string (URL or file path)
+  hireDate: Date; // Date
+  jobId: Schema.Types.ObjectId; // Array of job ObjectIds
+  departmentId: Schema.Types.ObjectId; // Array of department ObjectIds
+  skillDescription: string;
   description: string;
 }

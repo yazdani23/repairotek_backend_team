@@ -3,8 +3,8 @@ import { UserZoneDoc } from "../../types/userZone";
 
 const userZoneSchema = new Schema<UserZoneDoc>(
   {
-    userid: { type: Schema.Types.ObjectId, required: true },
-    zoneid: { type: Schema.Types.ObjectId, required: true },
+    userId: { type: Schema.Types.ObjectId, required: true },
+    zoneId: { type: Schema.Types.ObjectId, required: true },
   },
   { timestamps: true }
 );

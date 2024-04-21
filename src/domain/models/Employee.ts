@@ -5,20 +5,20 @@ import { Project } from "./Project";
 
 const employeeSchema = new Schema<EmployeeDoc>(
   {
-    employeecode: { type: Number, required: true },
+    employeeCode: { type: Number, required: true },
     // projects: [type: Schema.Types.project, required: true],
     gender: { type: Schema.Types.String, required: true},
-    firstname: { type: String, required: true },
-     lastname: { type: String, required: true },
+    firstName: { type: String, required: true },
+     lastName: { type: String, required: true },
      telephone: { type: String, required: true },
       mobile: { type: String, required: true },
        email: { type: String, required: true },//todo check
         address: { type: String, required: true },
-         profilephoto: { type: String, required: true },//todo check
-         hiredate: { type: Date, required: true},
-         jobid: {type:Schema.Types.ObjectId,ref:"Job",required:true},
-           departmentid: {type:Schema.Types.ObjectId,ref:"Department",required:true},
-    skilldescription: { type: String, required: true },
+         profilePhoto: { type: String, required: true },//todo check
+         hireDate: { type: Date, required: true},
+         jobId: {type:Schema.Types.ObjectId,ref:"Job",required:true},
+           departmentId: {type:Schema.Types.ObjectId,ref:"Department",required:true},
+    skillDescription: { type: String, required: true },
     description: { type: String, required: true },
   },
   { timestamps: true }

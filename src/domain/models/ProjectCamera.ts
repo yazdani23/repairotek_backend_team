@@ -3,8 +3,8 @@ import { ProjectCameraDoc } from "../../types/projectCamera";
 
 const projectCameraSchema = new Schema<ProjectCameraDoc>(
   {
-    projectid: { type: Schema.Types.ObjectId, required: true },
-    cameraid: { type: Schema.Types.ObjectId, required: true },
+    projectId: { type: Schema.Types.ObjectId, required: true },
+    cameraId: { type: Schema.Types.ObjectId, required: true },
   },
   { timestamps: true }
 );

@@ -3,14 +3,14 @@ import { ProjectDoc } from "../../types/project";
 
 const projectSchema = new Schema<ProjectDoc>(
   {
-    projectcode: { type: String, required: true },
-    userid: { type: Schema.Types.ObjectId, ref: "User", required: true }, // Assuming User is the related model
+    projectCode: { type: String, required: true },
+    userId: { type: Schema.Types.ObjectId, ref: "User", required: true }, // Assuming User is the related model
     title: { type: String, required: true },
-    zoneid: { type: Schema.Types.ObjectId, ref: "Zone", required: true }, // Assuming Zone is the related model
-    issuedatetime: { type: Date, required: true }, // Change type to Date
-    arealength: { type: Number, required: true },
-    areawidth: { type: Number, required: true },
-    areaheight: { type: Number, required: true },
+    zoneId: { type: Schema.Types.ObjectId, ref: "Zone", required: true }, // Assuming Zone is the related model
+    issueDateTime: { type: Date, required: true }, // Change type to Date
+    areaLength: { type: Number, required: true },
+    areaWidth: { type: Number, required: true },
+    areaHeight: { type: Number, required: true },
     description: { type: String, required: true },
   },
   { timestamps: true }
