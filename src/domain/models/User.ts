@@ -17,6 +17,12 @@ const userSchema = new Schema<UserDoc>(
   },
   { timestamps: true }
 );
+//Todo maybe Change
+userSchema.virtual("zones", {
+  ref: "Zone",
+  localField: "_id",
+  foreignField: "userIds",
+});
 
 userSchema.set("toJSON", {
   transform: (doc, returnObj) => {

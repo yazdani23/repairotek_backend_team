@@ -1,7 +1,7 @@
 import { Document, Schema } from "mongoose";
 
 export interface UserDoc extends Document {
-  userCode:number;
+  userCode:Number;
   firstName: string;
   lastName: string;
   email: string;
