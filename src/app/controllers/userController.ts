@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
-import UserService from "../../domain/services/UserService";
-
+import UserService from "../../services/UserService";
 
 class UserController {
   async createUser(req: Request, res: Response): Promise<void> {

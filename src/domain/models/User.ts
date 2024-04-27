@@ -1,28 +1,38 @@
-import mongoose, { Document, Schema } from "mongoose";
-import { UserDoc, userRoles } from "../../types/user";
+import { model, Schema } from "mongoose";
+import { UserDoc } from "../../types/user";
 
-
-
-const UserSchema = new Schema<UserDoc>({
-  username: { type: String, required: true },
-  email: { type: String, required: true },
-  password: { type: String, required: true },
-  term: { type: Boolean, required: true },
-  role: { type: String, enum: userRoles, default: "USER" },
+const userSchema = new Schema<UserDoc>(
+  {
+    userCode: { type: Number, required: true },
+    firstName: { type: String, required: true },
+    lastName: { type: String, required: true },
+    email: { type: String, required: true },
+    webSite: { type: String },
+    address: { type: String },
+    telephone: { type: String},
+    mobile: { type: Number , required: true},
+    profilePhoto: { type: String },
+    roleId: [{ type: Schema.Types.ObjectId, ref: "Role",required: true }
+    ],
+  },
+  { timestamps: true }
+);
+//Todo maybe Change
+userSchema.virtual("zones", {
+  ref: "Zone",
+  localField: "_id",
+  foreignField: "userIds",
 });
 
-UserSchema.set("toJSON", {
+userSchema.set("toJSON", {
   transform: (doc, returnObj) => {
     returnObj.id = returnObj._id.toString();
-    delete returnObj.password;
     delete returnObj.__v;
     delete returnObj._id;
-    delete returnObj.term;
   },
 });
 
-const User = mongoose.model<UserDoc>("User", UserSchema);
+export const User = model<UserDoc>("User", userSchema);
 
-export default User;
 
 
