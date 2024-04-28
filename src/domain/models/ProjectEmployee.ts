@@ -1,5 +1,5 @@
 import { model, Schema } from "mongoose";
-import { ProjectEmployeeDoc } from "../../types/projectEmployee";
+import { ProjectEmployeeDoc } from "../docs/ProjectEmployee";
 
 const projectEmployeeSchema = new Schema<ProjectEmployeeDoc>(
   {
@@ -17,4 +17,7 @@ projectEmployeeSchema.set("toJSON", {
   },
 });
 
-export const ProjectEmployee = model<ProjectEmployeeDoc>("ProjectEmployee", projectEmployeeSchema);
+export const ProjectEmployee = model<ProjectEmployeeDoc>(
+  "ProjectEmployee",
+  projectEmployeeSchema
+);

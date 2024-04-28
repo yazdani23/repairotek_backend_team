@@ -1,5 +1,5 @@
 import { Document, Schema } from "mongoose";
-import { ProjectDoc } from "./project";
+import { ProjectDoc } from "./Project";
 
 enum Gender {
   Male = "Male",

@@ -1,5 +1,5 @@
 import { model, Schema } from "mongoose";
-import { UserZoneDoc } from "../../types/userZone";
+import { UserZoneDoc } from "../docs/UserZone";
 
 const userZoneSchema = new Schema<UserZoneDoc>(
   {

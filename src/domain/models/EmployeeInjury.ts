@@ -1,6 +1,5 @@
 import { model, Schema } from "mongoose";
-import { EmployeeInjuryDoc } from "../../types/employeeInjury"
-
+import { EmployeeInjuryDoc } from "../docs/EmployeeInjury";
 
 const employeeInjurySchema = new Schema<EmployeeInjuryDoc>(
   {
@@ -20,8 +19,7 @@ employeeInjurySchema.set("toJSON", {
   },
 });
 
-export const EmployeeInjury = model<EmployeeInjuryDoc>("EmployeeInjury", employeeInjurySchema);
-
-
-
-
+export const EmployeeInjury = model<EmployeeInjuryDoc>(
+  "EmployeeInjury",
+  employeeInjurySchema
+);

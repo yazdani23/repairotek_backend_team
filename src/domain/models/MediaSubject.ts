@@ -1,5 +1,5 @@
 import { model, Schema } from "mongoose";
-import { MediaSubjectDoc } from "../../types/mediaSubject";
+import { MediaSubjectDoc } from "../docs/MediaSubject";
 
 const mediaSubjectobSchema = new Schema<MediaSubjectDoc>(
   {
@@ -18,6 +18,3 @@ mediaSubjectobSchema.set("toJSON", {
 });
 
 export const Job = model<MediaSubjectDoc>("MediaSubject", mediaSubjectobSchema);
-
-
-

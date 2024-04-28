@@ -1,16 +1,15 @@
 import { model, Schema } from "mongoose";
-import { ProjectGalleryDoc } from "../../types/projectGallery"
-
+import { ProjectGalleryDoc } from "../docs/ProjectGallery";
 
 const projectGallerySchema = new Schema<ProjectGalleryDoc>(
   {
-   projectId: {type:Schema.Types.ObjectId, required: true},
-  employeeId: {type:Schema.Types.ObjectId, required: true},
-  media: { type: String, required: true },
-  mediaDateTime: { type: String, required: true },
-  mediaSubjectId: {type:Schema.Types.ObjectId, required: true},
-  location:  { type: String, required: true }, 
-  description:  { type: String},
+    projectId: { type: Schema.Types.ObjectId, required: true },
+    employeeId: { type: Schema.Types.ObjectId, required: true },
+    media: { type: String, required: true },
+    mediaDateTime: { type: String, required: true },
+    mediaSubjectId: { type: Schema.Types.ObjectId, required: true },
+    location: { type: String, required: true },
+    description: { type: String },
   },
   { timestamps: true }
 );
@@ -23,8 +22,7 @@ projectGallerySchema.set("toJSON", {
   },
 });
 
-export const ProjectGallery = model<ProjectGalleryDoc>("ProjectGallery", projectGallerySchema);
-
-
-
-
+export const ProjectGallery = model<ProjectGalleryDoc>(
+  "ProjectGallery",
+  projectGallerySchema
+);

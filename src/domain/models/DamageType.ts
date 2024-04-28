@@ -1,6 +1,5 @@
 import { model, Schema } from "mongoose";
-import { DamageTypeDoc } from "../../types/damageType";
-
+import { DamageTypeDoc } from "../docs/DamageType";
 
 const damageTypeSchema = new Schema<DamageTypeDoc>(
   {
@@ -19,6 +18,3 @@ damageTypeSchema.set("toJSON", {
 });
 
 export const DamageType = model<DamageTypeDoc>("DamageType", damageTypeSchema);
-
-
-

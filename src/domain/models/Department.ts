@@ -1,6 +1,5 @@
 import { model, Schema } from "mongoose";
-import { DepartmentDoc } from "../../types/department";
-
+import { DepartmentDoc } from "../docs/Department";
 
 const departmentSchema = new Schema<DepartmentDoc>(
   {
@@ -19,6 +18,3 @@ departmentSchema.set("toJSON", {
 });
 
 export const Department = model<DepartmentDoc>("Department", departmentSchema);
-
-
-
