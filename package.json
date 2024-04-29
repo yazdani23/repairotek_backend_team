@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./src/index.ts",
-    "dev": "nodemon ./src/index.ts"
+    "dev": "nodemon ./src/index.ts",
+    "execute-file": "node ./scripts/serviceScripts.ts service_name"
   },
   "keywords": [],
   "author": "",
@@ -24,8 +25,7 @@
     "express": "^4.19.2",
     "joi": "^17.12.3",
     "mongoos": "^0.0.1-security",
-    "mongoose": "^8.2.4"
+    "mongoose": "^8.2.4",
+    "typescript-di": "^0.6.1"
   }
 }
-
-

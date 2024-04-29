@@ -1,5 +1,5 @@
 import { model, Schema } from "mongoose";
-import { ProvinceDoc } from "../../types/province";
+import { ProvinceDoc } from "../docs/Province";
 
 const provinceSchema = new Schema<ProvinceDoc>(
   {

@@ -1,6 +1,5 @@
 import { model, Schema } from "mongoose";
-import { JobDoc } from "../../types/job";
-
+import { JobDoc } from "../docs/Job";
 
 const jobSchema = new Schema<JobDoc>(
   {
@@ -19,6 +18,3 @@ jobSchema.set("toJSON", {
 });
 
 export const Job = model<JobDoc>("Job", jobSchema);
-
-
-

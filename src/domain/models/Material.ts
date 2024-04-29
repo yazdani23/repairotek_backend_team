@@ -1,6 +1,5 @@
 import { model, Schema } from "mongoose";
-import { MaterialDoc } from "../../types/material";
-
+import { MaterialDoc } from "../docs/Material";
 
 const materialSchema = new Schema<MaterialDoc>(
   {
@@ -19,6 +18,3 @@ materialSchema.set("toJSON", {
 });
 
 export const Material = model<MaterialDoc>("Material", materialSchema);
-
-
-

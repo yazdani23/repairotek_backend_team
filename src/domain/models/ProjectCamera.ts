@@ -1,5 +1,5 @@
 import { model, Schema } from "mongoose";
-import { ProjectCameraDoc } from "../../types/projectCamera";
+import { ProjectCameraDoc } from "../docs/ProjectCamera";
 
 const projectCameraSchema = new Schema<ProjectCameraDoc>(
   {
@@ -17,4 +17,7 @@ projectCameraSchema.set("toJSON", {
   },
 });
 
-export const ProjectCamera = model<ProjectCameraDoc>("ProjectCamera", projectCameraSchema);
+export const ProjectCamera = model<ProjectCameraDoc>(
+  "ProjectCamera",
+  projectCameraSchema
+);

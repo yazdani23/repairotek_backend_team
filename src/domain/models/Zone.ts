@@ -1,6 +1,5 @@
 import { model, Schema } from "mongoose";
-import { ZoneDoc } from "../../types/zone"
-
+import { ZoneDoc } from "../docs/Zone";
 
 const zoneSchema = new Schema<ZoneDoc>(
   {
@@ -18,7 +17,7 @@ const zoneSchema = new Schema<ZoneDoc>(
   },
   { timestamps: true }
 );
-//Todo maybe Change 
+//Todo maybe Change
 zoneSchema.virtual("users", {
   ref: "User",
   localField: "_id",
@@ -33,7 +32,3 @@ zoneSchema.set("toJSON", {
 });
 
 export const Zone = model<ZoneDoc>("Zone", zoneSchema);
-
-
-
-

@@ -1,12 +1,11 @@
 import { model, Schema } from "mongoose";
-import { CameraDoc } from "../../types/camera";
-
+import { CameraDoc } from "../docs/Camera";
 
 const cameraSchema = new Schema<CameraDoc>(
   {
     modelName: { type: String, required: true },
     cameraIp: { type: String, required: true },
-    cameraSpecification: { type: String}
+    cameraSpecification: { type: String },
   },
   { timestamps: true }
 );
@@ -20,6 +19,3 @@ cameraSchema.set("toJSON", {
 });
 
 export const Camera = model<CameraDoc>("Camera", cameraSchema);
-
-
-

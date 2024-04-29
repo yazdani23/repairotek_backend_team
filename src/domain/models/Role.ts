@@ -1,6 +1,5 @@
 import { model, Schema } from "mongoose";
-import { RoleDoc } from "../../types/role";
-
+import { RoleDoc } from "../docs/Role";
 
 const roleSchema = new Schema<RoleDoc>(
   {
@@ -19,6 +18,3 @@ roleSchema.set("toJSON", {
 });
 
 export const Role = model<RoleDoc>("Role", roleSchema);
-
-
-
