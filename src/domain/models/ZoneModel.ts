@@ -1,7 +1,8 @@
-import { model, Schema } from "mongoose";
+import { Schema } from "mongoose";
 import { ZoneDoc } from "../docs/Zone";
+import { generateSchema } from "../../utils/generators/modelGenerator";
 
-const zoneSchema = new Schema<ZoneDoc>(
+const ZoneModel = generateSchema<ZoneDoc>("Zone",
   {
     name: { type: String, required: true },
     state: { type: String, required: true },
@@ -15,20 +16,12 @@ const zoneSchema = new Schema<ZoneDoc>(
       { type: Schema.Types.ObjectId, ref: "Province", required: true },
     ],
   },
-  { timestamps: true }
 );
 //Todo maybe Change
-zoneSchema.virtual("users", {
-  ref: "User",
-  localField: "_id",
-  foreignField: "zoneIds",
-});
-zoneSchema.set("toJSON", {
-  transform: (doc, returnObj) => {
-    returnObj.id = returnObj._id.toString();
-    delete returnObj.__v;
-    delete returnObj._id;
-  },
-});
+// zoneSchema.virtual("users", {
+//   ref: "User",
+//   localField: "_id",
+//   foreignField: "zoneIds",
+// });
 
-export const Zone = model<ZoneDoc>("Zone", zoneSchema);
+ export default ZoneModel;
