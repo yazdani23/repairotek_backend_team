@@ -3,7 +3,7 @@ import { generateSchema } from "../../utils/generators/modelGenerator";
 
 const ProvinceModel = generateSchema<ProvinceDoc>("Province",
   {
-    code: { type: String, required: true },
+    code: { type: Number, required: true },
     name: { type: String, required: true },
   },
 );

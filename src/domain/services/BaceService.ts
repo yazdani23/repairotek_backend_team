@@ -25,7 +25,7 @@ class BaseService<T> implements Service<T> {
     try {
       return await this.repository.create(data);
     } catch (error) {
-      throw new Error(`Failed to create user: ${error}`);
+      throw new Error(`Failed to create: ${error}`);
     }
   }
 

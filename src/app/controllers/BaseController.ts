@@ -75,8 +75,8 @@ class BaceController<T> {
 
   async create(req: Request, res: Response): Promise<void> {
     try {
-      const userData = req.body as ResourceData<T>;
-      const createdResource = await this.service.create(userData);
+      const createData = req.body as ResourceData<T>;
+      const createdResource = await this.service.create(createData);
       res.status(201).json(createdResource);
     } catch (error) {
       console.error(error); // Log the error for debugging

@@ -13,10 +13,13 @@ class BaseRepository<T> implements Repository<T> {
   async create(data: ResourceData<T>): Promise<ResourceData<T>> {
     try {
       const newRecource = new this.model(data);
+      console.log("////////////////////////////");
+      
+      console.log(newRecource);
       await newRecource.save();
       return newRecource;
     } catch (error) {
-      throw new Error(`Failed to create user: ${error}`);
+      throw new Error(`Failed to create data: ${error}`);
     }
   }
 
@@ -25,7 +28,7 @@ class BaseRepository<T> implements Repository<T> {
       return await this.model.findById(id);
       //  .populate("zones");
     } catch (error) {
-      throw new Error(`Failed to create user: ${error}`);
+      throw new Error(`Failed to fetch data: ${error}`);
     }
   }
 
@@ -33,7 +36,7 @@ class BaseRepository<T> implements Repository<T> {
     try {
       return await this.model.find();
     } catch (error) {
-      throw new Error(`Failed to create user: ${error}`);
+      throw new Error(`Failed to fetch data: ${error}`);
     }
   }
 
@@ -44,7 +47,7 @@ class BaseRepository<T> implements Repository<T> {
     try {
       return await this.model.findByIdAndUpdate(id, data, { new: true });
     } catch (error) {
-      throw new Error(`Failed to create user: ${error}`);
+      throw new Error(`Failed to update data: ${error}`);
     }
   }
 
@@ -52,25 +55,25 @@ class BaseRepository<T> implements Repository<T> {
     try {
       await this.model.findByIdAndDelete(id);
     } catch (error) {
-      throw new Error(`Failed to create user: ${error}`);
+      throw new Error(`Failed to delete data: ${error}`);
     }
   }
 
   async search(searchQuery: string) {
-    const usersList = await this.model.find();
-    return usersList;
+    const results  = await this.model.find();
+    return results ;
   }
   async filter(filterCriteria: any) {
-    const users = await this.model.find();
-    return users;
+    const results  = await this.model.find();
+    return results ;
   }
   async getAllPaginated(
     limit: number,
     page: number,
     sort?: string | undefined
   ) {
-    const users = await this.model.find();
-    return { data: users, total: 100 };
+    const results  = await this.model.find();
+    return { data: results , total: 100 };
   }
 }
 

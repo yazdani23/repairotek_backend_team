@@ -2,6 +2,31 @@ const fs = require("fs");
 const path = require("path");
 
 const resourceName = process.argv[3];
+
+const controllerPath = path.join(
+  "src/app/controllers",
+  `${resourceName}Controller.ts`
+);
+
+const controllerContent = `
+
+import ${resourceName}Service from "../../domain/services/${resourceName}Service";
+import crudControllerGenerator from "../../utils/generators/crudControllerGenerator";
+
+const ${resourceName}Controller = crudControllerGenerator("${resourceName}", ${resourceName}Service);
+export default ${resourceName}Controller;
+`;
+
+try {
+  fs.writeFileSync(controllerPath, controllerContent);
+  console.log(`${resourceName}Service created at: ${controllerPath}`);
+} catch (error) {
+  console.error("Error creating Service:", error);
+}
+
+////////////////////////////////////
+
+
 const servicePath = path.join(
   "src/domain/services",
   `${resourceName}Service.ts`

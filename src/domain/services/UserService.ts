@@ -1,11 +1,12 @@
 import { UserDoc } from "../docs/User";
-import UserRepository from "../repositories/UserRepository";
-import userValidationSchema from "../validations/UserValidation";
 import BaseService from "./BaceService";
+import UserRepository from "../repositories/UserRepository";
+import UserValidationSchema from "../validations/UserValidation";
+
 
 class UserService extends BaseService<UserDoc> {
   constructor() {
-    super(UserRepository, userValidationSchema);
+    super(UserRepository, UserValidationSchema);
   }
 }
 

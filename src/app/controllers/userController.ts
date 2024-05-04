@@ -3,3 +3,4 @@ import crudControllerGenerator from "../../utils/generators/crudControllerGenera
 
 const UserController = crudControllerGenerator("User", UserService);
 export default UserController;
+
