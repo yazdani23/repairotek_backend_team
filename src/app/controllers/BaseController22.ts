@@ -2,7 +2,8 @@ import { Request, Response } from "express";
 import { Service } from "../../interfaces/Service";
 
 type ResourceData<T> = T;
-class BaceController<T> {
+//todo: this class never uses 
+class BaceController22<T> {
   protected service: Service<T>;
   constructor(service: Service<T>) {
     this.service = service;
@@ -88,6 +89,8 @@ class BaceController<T> {
     try {
       const id = req.params.id;
       const updatedData = req.body as ResourceData<T>;
+      console.log("*******test controller********************************");
+      console.log(updatedData); // Log
       const updatedResource = await this.service.update(id, updatedData);
       if (!updatedResource) {
         res.status(404).json({ error: `not found` });
@@ -112,4 +115,4 @@ class BaceController<T> {
   }
 }
 
-export default BaceController;
+export default BaceController22;

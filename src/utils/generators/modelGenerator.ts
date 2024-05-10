@@ -20,6 +20,7 @@ const toJsonSchema = <T>(
       return ret;
     },
   });
+
   return schema;
 };
 

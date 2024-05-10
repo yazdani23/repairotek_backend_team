@@ -7,14 +7,10 @@ const ZoneModel = generateSchema<ZoneDoc>("Zone",
     name: { type: String, required: true },
     state: { type: String, required: true },
     roadWay: { type: String, required: true },
-    ipAddress: { type: String, required: true },
-    timeZone: { type: String, required: true }, //---- Todo Change type to String
     longitude: { type: Number, required: true },
     latitude: { type: Number, required: true },
     description: { type: String },
-    provinceId: [
-      { type: Schema.Types.ObjectId, ref: "Province", required: true },
-    ],
+    provinceId: { type: Schema.Types.ObjectId, ref: "Province", required: true }
   },
 );
 //Todo maybe Change

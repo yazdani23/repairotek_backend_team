@@ -5,8 +5,6 @@ export interface ZoneDoc extends Document {
   provinceId: Schema.Types.ObjectId; // Array of province ObjectIds
   state: string;
   roadWay: string;
-  ipAddress: string;
-  timeZone: string;
   longitude: number;
   latitude: number;
   description: string;

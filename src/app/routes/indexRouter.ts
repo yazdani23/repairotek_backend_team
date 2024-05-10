@@ -9,6 +9,9 @@ import employeeRouter from "./employeeRouter";
 import equipmentRouter from "./equipmentRouter";
 import roleRouter from "./roleRouter";
 import provinceRouter from "./provinceRouter";
+import cameraRouter from "./cameraRouter";
+import zoneRouter from "./zoneRouter";
+import UserZoneRouter from "./userZoneRouter";
 
 const indexRouter = express.Router();
 // const { index, notFound } = require("../controllers/indexController");
@@ -22,6 +25,9 @@ indexRouter.use(employeeRouter);
 indexRouter.use(equipmentRouter); 
 indexRouter.use(provinceRouter);
 indexRouter.use(roleRouter);
+indexRouter.use(cameraRouter);
+indexRouter.use(zoneRouter);
+indexRouter.use(UserZoneRouter);
 // indexRouter.use("*", notFound);
 //todo remove
 // indexRouter.get("/", index);

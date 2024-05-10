@@ -104,7 +104,11 @@ const crudControllerGenerator = <T>(
       try {
         const id = req.params.id;
         const updatedData = req.body as ResourceData<T>;
+       
+
         const updatedResource = await service.update(id, updatedData);
+         console.log("*******test controller********"+id);
+        console.log(updatedData); // Log
         if (!updatedResource) {
           res.status(404).json({ error: `${baseName} not found` });
           return;
