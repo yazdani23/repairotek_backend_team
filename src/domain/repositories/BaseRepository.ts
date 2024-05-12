@@ -13,7 +13,7 @@ class BaseRepository<T> implements Repository<T> {
   async create(data: ResourceData<T>): Promise<ResourceData<T>> {
     try {
       const newRecource = new this.model(data);
-     
+
       console.log(newRecource);
       await newRecource.save();
       return newRecource;
@@ -48,7 +48,7 @@ class BaseRepository<T> implements Repository<T> {
         return null;
       }
       return updatedResource;
-       } catch (error) {
+    } catch (error) {
       throw new Error(`Failed to update data: ${error}`);
     }
   }
@@ -62,20 +62,20 @@ class BaseRepository<T> implements Repository<T> {
   }
 
   async search(searchQuery: string) {
-    const results  = await this.model.find();
-    return results ;
+    const results = await this.model.find();
+    return results;
   }
   async filter(filterCriteria: any) {
-    const results  = await this.model.find();
-    return results ;
+    const results = await this.model.find();
+    return results;
   }
   async getAllPaginated(
     limit: number,
     page: number,
     sort?: string | undefined
   ) {
-    const results  = await this.model.find();
-    return { data: results , total: 100 };
+    const results = await this.model.find();
+    return { data: results, total: 100 };
   }
 }
 
