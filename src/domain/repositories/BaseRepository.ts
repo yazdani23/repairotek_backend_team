@@ -13,7 +13,7 @@ class BaseRepository<T> implements Repository<T> {
   async create(data: ResourceData<T>): Promise<ResourceData<T>> {
     try {
       const newRecource = new this.model(data);
-     
+
       console.log(newRecource);
       await newRecource.save();
       return newRecource;
@@ -40,32 +40,16 @@ class BaseRepository<T> implements Repository<T> {
   }
 
   // async update(id: string, newData: Partial<ResourceData<T>>): Promise<ResourceData<T> | null>
-   async update(id: string, newData: Partial<T>): Promise<T | null>
-   {
-     console.log("////////////////////////////");
-      
+  async update(id: string, newData: Partial<T>): Promise<T | null> {
     try {
-      console.log("/////1///////////////");
-         console.log("Updating user with ID:", id);
-         console.log("/////2/////////////");
-         console.log("New data:", newData);
-         const updatedResource =await this.model.findByIdAndUpdate(id, newData, { new: true });
-         console.log("///////////3///////////");
-         console.log(updatedResource);
+      const updatedResource = await this.model.findByIdAndUpdate(id, newData, {
+        new: true,
+      });
       if (!updatedResource) {
-        // If the user with the specified ID is not found, return null
-        console.log("///////////4/////////////");
-        console.log("User not found with ID:", id);
         return null;
       }
-
-      // Log the updated user
-      console.log("/////////5//////////////");
-      console.log("User updated successfully:", updatedResource);
-
-      // Return the updated user
       return updatedResource;
-       } catch (error) {
+    } catch (error) {
       throw new Error(`Failed to update data: ${error}`);
     }
   }
@@ -79,20 +63,20 @@ class BaseRepository<T> implements Repository<T> {
   }
 
   async search(searchQuery: string) {
-    const results  = await this.model.find();
-    return results ;
+    const results = await this.model.find();
+    return results;
   }
   async filter(filterCriteria: any) {
-    const results  = await this.model.find();
-    return results ;
+    const results = await this.model.find();
+    return results;
   }
   async getAllPaginated(
     limit: number,
     page: number,
     sort?: string | undefined
   ) {
-    const results  = await this.model.find();
-    return { data: results , total: 100 };
+    const results = await this.model.find();
+    return { data: results, total: 100 };
   }
 }
 
