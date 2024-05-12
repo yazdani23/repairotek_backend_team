@@ -44,8 +44,7 @@ class BaseService<T> implements Service<T> {
         return null; // Record not found
       }
 
-      const updatedRecord = { ...existingData, ...data };
-      return await this.repository.update(id, updatedRecord);
+      return await this.repository.update(id, data);
     } catch (error) {
       throw new Error(`Failed to update: ${error}`);
     }
