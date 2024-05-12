@@ -89,8 +89,6 @@ class BaceController22<T> {
     try {
       const id = req.params.id;
       const updatedData = req.body as ResourceData<T>;
-      console.log("*******test controller********************************");
-      console.log(updatedData); // Log
       const updatedResource = await this.service.update(id, updatedData);
       if (!updatedResource) {
         res.status(404).json({ error: `not found` });
