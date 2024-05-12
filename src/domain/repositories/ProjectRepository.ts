@@ -10,8 +10,29 @@ class ProjectRepository extends BaseRepository<ProjectDoc> {
     try {
       return await this.model
         .findById(id)
-        .populate("userZoneId").populate("userId")//returns just name property
-        // .populate("roleId") //returns all the role's properties
+        .populate({
+          path: "userZoneId",
+          populate: {
+            path: "zoneId"
+          },
+        })
+        // this.model
+        //   .findById(id)
+        //   // .populate("userZoneId")
+        //   // .populate("userId","zoneId") //returns just name property
+        //   // .populate("roleId") //returns all the role's properties
+
+        //   .populate({
+        //     path: "userZoneId",
+        //     populate: {
+        //       path: "zoneID",
+        //       // populate: {
+        //       //   path: "userID",
+        //       //   model: "UserZone",
+        //       // },
+        //     },
+        //   })
+
         .exec();
     } catch (error) {
       throw new Error(`Failed to fetch data: ${error}`);

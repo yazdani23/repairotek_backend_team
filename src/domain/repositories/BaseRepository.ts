@@ -41,29 +41,12 @@ class BaseRepository<T> implements Repository<T> {
 
   // async update(id: string, newData: Partial<ResourceData<T>>): Promise<ResourceData<T> | null>
    async update(id: string, newData: Partial<T>): Promise<T | null>
-   {
-     console.log("////////////////////////////");
-      
+   {      
     try {
-      console.log("/////1///////////////");
-         console.log("Updating user with ID:", id);
-         console.log("/////2/////////////");
-         console.log("New data:", newData);
          const updatedResource =await this.model.findByIdAndUpdate(id, newData, { new: true });
-         console.log("///////////3///////////");
-         console.log(updatedResource);
       if (!updatedResource) {
-        // If the user with the specified ID is not found, return null
-        console.log("///////////4/////////////");
-        console.log("User not found with ID:", id);
         return null;
       }
-
-      // Log the updated user
-      console.log("/////////5//////////////");
-      console.log("User updated successfully:", updatedResource);
-
-      // Return the updated user
       return updatedResource;
        } catch (error) {
       throw new Error(`Failed to update data: ${error}`);
