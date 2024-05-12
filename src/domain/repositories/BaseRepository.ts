@@ -13,10 +13,12 @@ class BaseRepository<T> implements Repository<T> {
   async create(data: ResourceData<T>): Promise<ResourceData<T>> {
     try {
       const newRecource = new this.model(data);
+     
+      console.log(newRecource);
       await newRecource.save();
       return newRecource;
     } catch (error) {
-      throw new Error(`Failed to create user: ${error}`);
+      throw new Error(`Failed to create data: ${error}`);
     }
   }
 
@@ -25,7 +27,7 @@ class BaseRepository<T> implements Repository<T> {
       return await this.model.findById(id);
       //  .populate("zones");
     } catch (error) {
-      throw new Error(`Failed to create user: ${error}`);
+      throw new Error(`Failed to fetch data: ${error}`);
     }
   }
 
@@ -33,18 +35,38 @@ class BaseRepository<T> implements Repository<T> {
     try {
       return await this.model.find();
     } catch (error) {
-      throw new Error(`Failed to create user: ${error}`);
+      throw new Error(`Failed to fetch data: ${error}`);
     }
   }
 
-  async update(
-    id: string,
-    data: Partial<ResourceData<T>>
-  ): Promise<ResourceData<T> | null> {
+  // async update(id: string, newData: Partial<ResourceData<T>>): Promise<ResourceData<T> | null>
+   async update(id: string, newData: Partial<T>): Promise<T | null>
+   {
+     console.log("////////////////////////////");
+      
     try {
-      return await this.model.findByIdAndUpdate(id, data, { new: true });
-    } catch (error) {
-      throw new Error(`Failed to create user: ${error}`);
+      console.log("/////1///////////////");
+         console.log("Updating user with ID:", id);
+         console.log("/////2/////////////");
+         console.log("New data:", newData);
+         const updatedResource =await this.model.findByIdAndUpdate(id, newData, { new: true });
+         console.log("///////////3///////////");
+         console.log(updatedResource);
+      if (!updatedResource) {
+        // If the user with the specified ID is not found, return null
+        console.log("///////////4/////////////");
+        console.log("User not found with ID:", id);
+        return null;
+      }
+
+      // Log the updated user
+      console.log("/////////5//////////////");
+      console.log("User updated successfully:", updatedResource);
+
+      // Return the updated user
+      return updatedResource;
+       } catch (error) {
+      throw new Error(`Failed to update data: ${error}`);
     }
   }
 
@@ -52,25 +74,25 @@ class BaseRepository<T> implements Repository<T> {
     try {
       await this.model.findByIdAndDelete(id);
     } catch (error) {
-      throw new Error(`Failed to create user: ${error}`);
+      throw new Error(`Failed to delete data: ${error}`);
     }
   }
 
   async search(searchQuery: string) {
-    const usersList = await this.model.find();
-    return usersList;
+    const results  = await this.model.find();
+    return results ;
   }
   async filter(filterCriteria: any) {
-    const users = await this.model.find();
-    return users;
+    const results  = await this.model.find();
+    return results ;
   }
   async getAllPaginated(
     limit: number,
     page: number,
     sort?: string | undefined
   ) {
-    const users = await this.model.find();
-    return { data: users, total: 100 };
+    const results  = await this.model.find();
+    return { data: results , total: 100 };
   }
 }
 

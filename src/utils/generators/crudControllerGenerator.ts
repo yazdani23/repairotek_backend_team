@@ -79,12 +79,24 @@ const crudControllerGenerator = <T>(
 
     async create(req: Request, res: Response): Promise<void> {
       try {
-        const userData = req.body as ResourceData<T>;
-        const createdResource = await service.create(userData);
+        const createData = req.body as ResourceData<T>;
+        console.log(createData);
+        
+        const createdResource = await service.create(createData);
         res.status(201).json(createdResource);
+        // } catch (error) {
+        //   console.error(error); // Log the error for debugging
+        //   // res.status(500).json({ error: "An unknown error occurred" });
+        //    res.status(500).json(error.message);
+        // }
       } catch (error) {
-        console.error(error); // Log the error for debugging
-        res.status(500).json({ error: "An unknown error occurred" });
+        console.error(error+'1'); // Log the error for debugging
+        let errorMessage = "An unknown error occurred";
+        if (error instanceof Error && error.message) {
+          errorMessage = '2 '+ error.message;
+        }
+        res.status(500).json({ error: errorMessage });
+        console.error(errorMessage+'77'); // Log the error for debuggingole.error(req.bo); // Log the error for debugging
       }
     }
 
@@ -92,7 +104,11 @@ const crudControllerGenerator = <T>(
       try {
         const id = req.params.id;
         const updatedData = req.body as ResourceData<T>;
+       
+
         const updatedResource = await service.update(id, updatedData);
+         console.log("*******test controller********"+id);
+        console.log(updatedData); // Log
         if (!updatedResource) {
           res.status(404).json({ error: `${baseName} not found` });
           return;

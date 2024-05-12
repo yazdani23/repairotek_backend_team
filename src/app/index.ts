@@ -1,15 +1,16 @@
 import express from "express";
-import connentDB from "../config/db";
 import dotenv from "dotenv";
+import connentDB from "../config/db";
+import cors from "cors";
 import indexRouter from "./routes/indexRouter";
-import cors from 'cors'
 
 const app = express();
 
-app.use(cors())
+dotenv.config();
+app.use(cors());
 app.use(express.json());
 app.use("/api", indexRouter)
-dotenv.config();
 connentDB();
+
 
 export default app;

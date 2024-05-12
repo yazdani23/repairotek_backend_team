@@ -1,24 +1,14 @@
-import { model, Schema } from "mongoose";
-import { EquipmentTypeDoc } from "../docs/EquipmentType";
+import { Schema } from "mongoose";
+import { EquipmentDoc } from "../docs/Equipment";
+import { generateSchema } from "../../utils/generators/modelGenerator";
+import { string } from "joi";
 
-const equipmentTypeSchema = new Schema<EquipmentTypeDoc>(
-  {
-    name: { type: String, required: true },
-    equipmentModel: { type: String, required: true },
-    description: { type: String, required: true },
-  },
-  { timestamps: true }
-);
-
-equipmentTypeSchema.set("toJSON", {
-  transform: (doc, returnObj) => {
-    returnObj.id = returnObj._id.toString();
-    delete returnObj.__v;
-    delete returnObj._id;
-  },
+const EquipmentModel = generateSchema<EquipmentDoc>("Equipment",
+{
+  employeeId: { type: Schema.Types.ObjectId, required: true },
+  equipmentTypeId: { type: Schema.Types.ObjectId, required: true },
+  allocatedHours: { type: Number, required: true },
+  description: { type: String, required: true },
 });
 
-export const EquipmentType = model<EquipmentTypeDoc>(
-  "EquipmentType",
-  equipmentTypeSchema
-);
+export default EquipmentModel;

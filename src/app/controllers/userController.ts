@@ -3,3 +3,9 @@ import crudControllerGenerator from "../../utils/generators/crudControllerGenera
 
 const UserController = crudControllerGenerator("User", UserService);
 export default UserController;
+
+// class UserService extends BaseService<UserDoc> {
+//   constructor() {
+//     super(UserRepository, UserValidationSchema);
+//   }
+// }

@@ -20,13 +20,14 @@ const toJsonSchema = <T>(
       return ret;
     },
   });
+
   return schema;
 };
 
 const generateSchema = <T>(
   modelName: string,
   schemaDefinition: SchemaDefinition<SchemaDefinitionType<T>, T>
-): Model<T> => {
+): Model<T> => {  
   const schema = new Schema<T>(schemaDefinition, { timestamps: true });
   toJsonSchema(schema);
 
