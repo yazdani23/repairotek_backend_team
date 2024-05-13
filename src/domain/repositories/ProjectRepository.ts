@@ -10,29 +10,16 @@ class ProjectRepository extends BaseRepository<ProjectDoc> {
     try {
       return await this.model
         .findById(id)
-        .populate({
-          path: "userZoneId",
-          populate: {
-            path: "zoneId"
-          },
-        })
-        // this.model
-        //   .findById(id)
-        //   // .populate("userZoneId")
-        //   // .populate("userId","zoneId") //returns just name property
-        //   // .populate("roleId") //returns all the role's properties
-
-        //   .populate({
-        //     path: "userZoneId",
-        //     populate: {
-        //       path: "zoneID",
-        //       // populate: {
-        //       //   path: "userID",
-        //       //   model: "UserZone",
-        //       // },
-        //     },
-        //   })
-
+        //For two step jooing
+        // .populate({
+        //   path: "userId",
+        //   populate: {
+        //     path: "roleId",
+        //     model: "Role",
+        //   },
+        // })
+        .populate("userId")
+        .populate("zoneId") //returns all the role's properties
         .exec();
     } catch (error) {
       throw new Error(`Failed to fetch data: ${error}`);
@@ -40,9 +27,11 @@ class ProjectRepository extends BaseRepository<ProjectDoc> {
   }
   async getAll(): Promise<ProjectDoc[]> {
     try {
-      return await this.model.find().populate("userZoneId", "userId")
-      // .populate("userId")
-      .exec();
+      return await this.model
+        .find()
+        .populate("userId")
+        .populate("zoneId")
+        .exec();
     } catch (error) {
       throw new Error(`Failed to fetch data: ${error}`);
     }

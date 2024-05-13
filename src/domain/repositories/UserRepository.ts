@@ -10,8 +10,7 @@ class UserRepository extends BaseRepository<UserDoc> {
     try {
       return await this.model
         .findById(id)
-        .populate("roleId", "name") //returns just name property
-        // .populate("roleId") //returns all the role's properties
+        .populate("roleId", "name") 
         .exec();
     } catch (error) {
       throw new Error(`Failed to fetch data: ${error}`);

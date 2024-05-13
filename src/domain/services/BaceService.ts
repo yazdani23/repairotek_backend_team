@@ -43,8 +43,8 @@ class BaseService<T> implements Service<T> {
       if (!existingData) {
         return null; // Record not found
       }
-
       return await this.repository.update(id, data);
+
     } catch (error) {
       throw new Error(`Failed to update: ${error}`);
     }

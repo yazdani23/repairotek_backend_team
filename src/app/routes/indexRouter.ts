@@ -11,7 +11,8 @@ import roleRouter from "./roleRouter";
 import provinceRouter from "./provinceRouter";
 import cameraRouter from "./cameraRouter";
 import zoneRouter from "./zoneRouter";
-import UserZoneRouter from "./userZoneRouter";
+// import userZoneRouter from "./userZoneRouter";
+import permissionRouter from "./permissionRouter";
 
 const indexRouter = express.Router();
 // const { index, notFound } = require("../controllers/indexController");
@@ -27,7 +28,8 @@ indexRouter.use(provinceRouter);
 indexRouter.use(roleRouter);
 indexRouter.use(cameraRouter);
 indexRouter.use(zoneRouter);
-indexRouter.use(UserZoneRouter);
+// indexRouter.use(userZoneRouter);
+indexRouter.use(permissionRouter);
 // indexRouter.use("*", notFound);
 //todo remove
 // indexRouter.get("/", index);

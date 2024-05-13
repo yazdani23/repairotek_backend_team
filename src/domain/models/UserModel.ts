@@ -12,7 +12,7 @@ const UserModel = generateSchema<UserDoc>("User", {
   telephone: { type: String },
   mobile: { type: Number, required: true },
   profilePhoto: { type: String },
-  roleId: [{ type: Schema.Types.ObjectId, ref: "Role", required: true }],
+  roleId: { type: Schema.Types.ObjectId, ref: "Role", required: true },
   password: { type: String, required: true },
 });
 

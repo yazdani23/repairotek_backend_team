@@ -2,9 +2,9 @@ import { Document, Schema } from "mongoose";
 
 export interface ProjectDoc extends Document {
   projectCode: string;
-  userZoneId: Schema.Types.ObjectId; // Array of user ObjectIds
+  userId: Schema.Types.ObjectId; 
   title: string;
-  // zoneId: Schema.Types.ObjectId; // Array of zone ObjectIds
+  zoneId: Schema.Types.ObjectId; 
   issueDateTime: Date;
   areaLength: number; // Number of
   areaWidth: number; // Number of
