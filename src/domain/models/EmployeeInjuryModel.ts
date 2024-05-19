@@ -4,8 +4,8 @@ import { generateSchema } from "../../utils/generators/modelGenerator";
 
 const EmployeeInjuryModel = generateSchema<EmployeeInjuryDoc>("EmployeeInjury",
 {
-  employeeId: { type: Schema.Types.ObjectId, required: true },
-  injuryTypeId: { type: Schema.Types.ObjectId, required: true },
+  employeeId: { type: Schema.Types.ObjectId,ref:"Employee", required: true },
+  injuryTypeId: { type: Schema.Types.ObjectId,ref:"InjuryType", required: true },
   injuryDateTime: { type: Date, required: true },
   insurance: { type: Boolean, required: true },
 });
