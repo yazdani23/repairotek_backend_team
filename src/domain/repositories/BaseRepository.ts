@@ -40,11 +40,10 @@ class BaseRepository<T> implements Repository<T> {
   }
 
   // async update(id: string, newData: Partial<ResourceData<T>>): Promise<ResourceData<T> | null>
-  async update(id: string, newData: Partial<T>): Promise<T | null> {
+   async update(id: string, newData: Partial<T>): Promise<T | null>
+   {      
     try {
-      const updatedResource = await this.model.findByIdAndUpdate(id, newData, {
-        new: true,
-      });
+         const updatedResource =await this.model.findByIdAndUpdate(id, newData, { new: true });
       if (!updatedResource) {
         return null;
       }

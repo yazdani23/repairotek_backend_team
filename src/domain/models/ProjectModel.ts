@@ -7,9 +7,9 @@ const unit = ["cm", "m", "in", "ft"];
 
 const ProjectModel = generateSchema<ProjectDoc>("Project", {
   projectCode: { type: String, required: true },
-  userZoneId: { type: Schema.Types.ObjectId, ref: "UserZone", required: true }, // Assuming User is the related model
+  userId: { type: Schema.Types.ObjectId, ref: "User", required: true }, // Assuming User is the related model
   title: { type: String, required: true },
-  // zoneId: { type: Schema.Types.ObjectId, ref: "Zone", required: true }, // Assuming Zone is the related model
+  zoneId: { type: Schema.Types.ObjectId, ref: "Zone", required: true }, // Assuming Zone is the related model
   issueDateTime: { type: Date, required: true }, // Change type to Date
   areaLength: { type: Number, required: true },
   areaWidth: { type: Number, required: true },

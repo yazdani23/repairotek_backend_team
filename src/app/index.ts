@@ -7,10 +7,12 @@ import indexRouter from "./routes/indexRouter";
 const app = express();
 
 dotenv.config();
+console.log("Starting ");
+connentDB();
 app.use(cors());
 app.use(express.json());
 app.use("/api", indexRouter)
-connentDB();
+
 
 
 export default app;

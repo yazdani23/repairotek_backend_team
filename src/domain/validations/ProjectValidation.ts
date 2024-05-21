@@ -2,9 +2,9 @@ import Joi from "joi";
 
 const ProjectValidationSchema = Joi.object({
   projectCode: Joi.string().required(),
-  userZoneId: Joi.string().required(),
+  userId: Joi.string().required(),
   title: Joi.string().required(),
-  // zoneId: Joi.string().required(),
+  zoneId: Joi.string().required(),
   issueDateTime: Joi.date().required(),
   areaLength: Joi.number().required(),
   areaWidth: Joi.number().required(),

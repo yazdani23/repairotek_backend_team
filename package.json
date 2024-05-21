@@ -4,9 +4,9 @@
   "description": "",
   "main": "./src/index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./src/index.ts",
-    "dev": "nodemon ./src/index.ts",
+    "test": "cross-env ENV_MODE=test echo \"Error: no test specified\" && exit 1",
+    "start": "cross-env ENV_MODE=production node ./src/index.ts",
+    "dev": "cross-env ENV_MODE=develop nodemon ./src/index.ts",
     "execute-file": "node ./scripts/serviceScripts.ts service_name"
   },
   "keywords": [],
@@ -17,6 +17,7 @@
     "@types/express": "^4.17.21",
     "@types/mongoose": "^5.11.97",
     "@types/node": "^20.12.2",
+    "cross-env": "^7.0.3",
     "nodemon": "^3.1.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.3"
