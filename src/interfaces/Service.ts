@@ -1,6 +1,6 @@
 type ResourceData<T> = T; // Generic type for resource data
 
-interface IService<T> {
+export interface IService<T> {
   create: (data: ResourceData<T>) => Promise<ResourceData<T>>;
   update: (
     id: string,

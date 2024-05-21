@@ -23,6 +23,17 @@ class UserRepository extends BaseRepository<UserDoc> {
       throw new Error(`Failed to fetch data: ${error}`);
     }
   }
+  async getUser(id: string): Promise<UserDoc | null> {
+    try {
+      return await this.model
+        .findById(id)
+        .populate("roleId", "name") //returns just name property
+        // .populate("roleId") //returns all the role's properties
+        .exec();
+    } catch (error) {
+      throw new Error(`Failed to fetch data: ${error}`);
+    }
+  }
 }
 
 export default new UserRepository();

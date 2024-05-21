@@ -9,12 +9,16 @@ const controllerPath = path.join(
 );
 
 const controllerContent = `
-
+import { ${resourceName}Doc } from "../../domain/docs/${resourceName}";
 import ${resourceName}Service from "../../domain/services/${resourceName}Service";
-import crudControllerGenerator from "../../utils/generators/crudControllerGenerator";
+import BaceController from "./BaseController";
 
-const ${resourceName}Controller = crudControllerGenerator("${resourceName}", ${resourceName}Service);
-export default ${resourceName}Controller;
+class ${resourceName}Controller extends BaceController<${resourceName}Doc> {
+  constructor() {
+    super(${resourceName}Service);
+  }
+}
+export default new ${resourceName}Controller();
 `;
 
 try {

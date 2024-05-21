@@ -1,22 +1,15 @@
-type ResourceData<T> = T;
+import { Request, Response } from "express";
 
-interface IController<T> {
-  create: (newData: ResourceData<T>) => Promise<ResourceData<T>>;
-  update: (
-    id: string,
-    updatedData: Partial<ResourceData<T>>
-  ) => Promise<ResourceData<T> | null>;
-  delete: (id: string) => Promise<void>;
+export interface IController<T> {
+  create: (req: Request, res: Response) => Promise<Response>;
+  update: (req: Request, res: Response) => Promise<Response>;
+  delete: (req: Request, res: Response) => Promise<Response>;
 
-  getAll: () => Promise<ResourceData<T>[]>;
-  getById: (id: string) => Promise<ResourceData<T> | null>;
-  search: (searchQuery: string) => Promise<ResourceData<T>[]>;
-  filter: (filterCriteria: any) => Promise<ResourceData<T>[]>;
-  getAllPaginated: (
-    limit: number,
-    page: number,
-    sort?: string
-  ) => Promise<{ data: ResourceData<T>[]; total: number }>;
+  getAll: (req: Request, res: Response) => Promise<Response>;
+  getById: (req: Request, res: Response) => Promise<Response>;
+  search: (req: Request, res: Response) => Promise<Response>;
+  filter: (req: Request, res: Response) => Promise<Response>;
+  getAllPaginated: (req: Request, res: Response) => Promise<Response>;
 }
 
 export type Controller<T> = IController<T>;

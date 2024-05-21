@@ -1,5 +1,10 @@
+import { EquipmentDoc } from "../../domain/docs/Equipment";
 import EquipmentService from "../../domain/services/EquipmentService";
-import crudControllerGenerator from "../../utils/generators/crudControllerGenerator";
+import BaceController from "./BaseController";
 
-const EquipmentController = crudControllerGenerator("Equipment", EquipmentService);
-export default EquipmentController;
+class EquipmentController extends BaceController<EquipmentDoc> {
+  constructor() {
+    super(EquipmentService);
+  }
+}
+export default new EquipmentController();

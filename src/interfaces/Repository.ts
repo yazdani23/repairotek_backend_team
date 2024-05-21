@@ -4,7 +4,7 @@ export interface IRepository<T> {
   create: (data: ResourceData<T>) => Promise<ResourceData<T>>;
   update: (
     id: string,
-    newData: Partial<ResourceData<T>>
+    data: Partial<ResourceData<T>>
   ) => Promise<ResourceData<T> | null>;
   delete: (id: string) => Promise<void>;
 

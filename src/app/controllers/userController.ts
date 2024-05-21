@@ -1,11 +1,38 @@
+import { Request, Response } from "express";
 import UserService from "../../domain/services/UserService";
-import crudControllerGenerator from "../../utils/generators/crudControllerGenerator";
+import BaceController from "./BaseController";
+import { UserDoc } from "../../domain/docs/User";
 
-const UserController = crudControllerGenerator("User", UserService);
-export default UserController;
+// const UserController = crudControllerGenerator("User", UserService);
+class UserController extends BaceController<UserDoc> {
+  constructor() {
+    super(UserService);
+  }
 
-// class UserService extends BaseService<UserDoc> {
-//   constructor() {
-//     super(UserRepository, UserValidationSchema);
-//   }
-// }
+  getOnlineUsers = async (req: Request, res: Response): Promise<Response> => {
+    try {
+      const onlineUsers: UserDoc[] = [];
+      const sessions: any = req.sessionStore.all;
+      console.log(sessions);
+      
+      for (const sessionId in sessions) {
+        if (sessions.hasOwnProperty(sessionId)) {
+          const sessionData = JSON.parse(sessions[sessionId]);
+          if (sessionData && sessionData.user) {
+            const user: UserDoc | null = await UserService.getById(
+              sessionData.user.id
+            );
+            if (user) {
+              onlineUsers.push(user);
+            }
+          }
+
+        }
+      }
+      return res.status(200).json(onlineUsers);
+    } catch (error: any) {
+      return res.status(500).json({ error: error.message });
+    }
+  };
+}
+export default new UserController();
