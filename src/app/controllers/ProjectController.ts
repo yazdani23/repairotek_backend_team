@@ -1,23 +1,13 @@
+import { ProjectDoc } from "../../domain/docs/Project";
 import ProjectService from "../../domain/services/ProjectService";
-import crudControllerGenerator from "../../utils/generators/crudControllerGenerator";
+import BaceController from "./BaseController";
 
-const ProjectController = crudControllerGenerator("Project", ProjectService);
-export default ProjectController;
+class ProjectController extends BaceController<ProjectDoc> {
+  constructor() {
+    super(ProjectService);
+  }
+}
+export default new ProjectController();
 
-// export default  new ProjectController(ProjectSevice);
-
-// class ProjectController extends BaceController<ProjectDoc> {
-//   constructor(projectService: ProjectService) {
-//     super(projectService);
-//     const test = async () => {
-//        const projects= await this.service.getAll();
-//       console.log(projects);
-//     };
-//     test()
-//   }
-// }
-// const projectService = new ProjectService(
-//   new ProjectRepository(),
-//   ProductValidationSchema
-// );
-// export default new ProjectController(projectService);
+// const ProjectController = crudControllerGenerator("Project", ProjectService);
+// export default ProjectController;

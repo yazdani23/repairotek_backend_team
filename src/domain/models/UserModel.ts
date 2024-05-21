@@ -14,6 +14,7 @@ const UserModel = generateSchema<UserDoc>("User", {
   profilePhoto: { type: String },
   roleId: [{ type: Schema.Types.ObjectId, ref: "Role", required: true }],
   password: { type: String, required: true },
+  lastActivity: { type: Number },
 });
 
 export default UserModel;

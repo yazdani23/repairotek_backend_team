@@ -1,7 +1,13 @@
 
 
+import { MaterialDoc } from "../../domain/docs/Material";
 import MaterialService from "../../domain/services/MaterialService";
-import crudControllerGenerator from "../../utils/generators/crudControllerGenerator";
+import BaceController from "./BaseController";
 
-const MaterialController = crudControllerGenerator("Material", MaterialService);
-export default MaterialController;
+
+class MaterialController extends BaceController<MaterialDoc> {
+  constructor() {
+    super(MaterialService);
+  }
+}
+export default new MaterialController();

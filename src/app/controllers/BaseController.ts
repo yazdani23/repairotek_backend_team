@@ -1,46 +1,73 @@
 import { Request, Response } from "express";
 import { Service } from "../../interfaces/Service";
+import { Controller } from "../../interfaces/Controller";
 
 type ResourceData<T> = T;
-//todo: this class never uses 
-class BaceController22<T> {
+
+class BaceController<T> implements Controller<T> {
   protected service: Service<T>;
+
   constructor(service: Service<T>) {
     this.service = service;
   }
 
-  async getAll(req: Request, res: Response): Promise<void> {
+  getAll = async (req: Request, res: Response): Promise<Response> => {
     try {
       const resources = await this.service.getAll();
-      res.status(200).json(resources);
+      return res.status(200).json(resources);
     } catch (error) {
       console.error(error);
-      res.status(500).json({ error: "An unknown error occurred" });
+      return res.status(500).json({ error: "An unknown error occurred" });
     }
-  }
-  async search(req: Request, res: Response): Promise<void> {
+  };
+  getById = async (req: Request, res: Response): Promise<Response> => {
+    try {
+      const id = req.params.id;
+      const resource = await this.service.getById(id);
+      if (!resource) {
+        return res.status(404).json({ error: `not found` });
+      }
+      return res.status(200).json(resource);
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({ error: "An unknown error occurred" });
+    }
+  };
+
+  create = async (req: Request, res: Response): Promise<Response> => {
+    try {
+      const createData = req.body as ResourceData<T>;
+      console.log(this); /// ---> undeifine
+      const createdResource = await this.service.create(createData);
+      return res.status(201).json(createdResource);
+    } catch (error) {
+      console.error(error); // Log the error for debugging
+      return res.status(500).json({ error: "An unknown error occurred" });
+    }
+  };
+  search = async (req: Request, res: Response): Promise<Response> => {
     try {
       const searchQuery = req.params.query;
       const results = await this.service.search(searchQuery);
-      res.status(200).json(results);
+      return res.status(200).json(results);
     } catch (error) {
       console.error(error); // Log the error for debugging
-      res.status(500).json({ error: "An unknown error occurred" });
+      return res.status(500).json({ error: "An unknown error occurred" });
     }
-  }
+  };
 
-  async filter(req: Request, res: Response): Promise<void> {
+  filter = async (req: Request, res: Response): Promise<Response> => {
     try {
       const filterCriteria = req.body;
       const filteredResults = await this.service.filter(filterCriteria);
-      res.status(200).json(filteredResults);
+      return res.status(200).json(filteredResults);
     } catch (error) {
       console.error(error); // Log the error for debugging
-      res.status(500).json({ error: "An unknown error occurred" });
+      return res.status(500).json({ error: "An unknown error occurred" });
     }
-  }
+  };
 
-  async getAllPaginated(req: Request, res: Response): Promise<void> {
+  getAllPaginated = async (req: Request, res: Response): Promise<Response> => {
     try {
       const limit = parseInt(req.params.limit, 10);
       const page = parseInt(req.params.page, 10);
@@ -52,65 +79,67 @@ class BaceController22<T> {
           page
           // sort
         );
-      res.status(200).json({ data: paginatedResults, total });
+      return res.status(200).json({ data: paginatedResults, total });
     } catch (error) {
       console.error(error); // Log the error for debugging
-      res.status(500).json({ error: "An unknown error occurred" });
+      return res.status(500).json({ error: "An unknown error occurred" });
     }
-  }
+  };
 
-  async getById(req: Request, res: Response): Promise<void> {
-    try {
-      const id = req.params.id;
-      const resource = await this.service.getById(id);
-      if (!resource) {
-        res.status(404).json({ error: `not found` });
-        return;
-      }
-      res.status(200).json(resource);
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: "An unknown error occurred" });
-    }
-  }
-
-  async create(req: Request, res: Response): Promise<void> {
-    try {
-      const createData = req.body as ResourceData<T>;
-      const createdResource = await this.service.create(createData);
-      res.status(201).json(createdResource);
-    } catch (error) {
-      console.error(error); // Log the error for debugging
-      res.status(500).json({ error: "An unknown error occurred" });
-    }
-  }
-
-  async update(req: Request, res: Response): Promise<void> {
+  update = async (req: Request, res: Response): Promise<Response> => {
     try {
       const id = req.params.id;
       const updatedData = req.body as ResourceData<T>;
       const updatedResource = await this.service.update(id, updatedData);
       if (!updatedResource) {
-        res.status(404).json({ error: `not found` });
-        return;
+        return res.status(404).json({ error: `not found` });
       }
-      res.status(200).json(updatedResource);
+      return res.status(200).json(updatedResource);
     } catch (error) {
       console.error(error);
-      res.status(500).json({ error: "An unknown error occurred" });
+      return res.status(500).json({ error: "An unknown error occurred" });
     }
-  }
+  };
 
-  async delete(req: Request, res: Response): Promise<void> {
+  delete = async (req: Request, res: Response): Promise<Response> => {
     try {
       const id = req.params.id;
       await this.service.delete(id);
-      res.status(204).send(); // No content on successful deletion
+      return res.status(204).send(); // No content on successful deletion
     } catch (error) {
       console.error(error);
-      res.status(500).json({ error: "An unknown error occurred" });
+      return res.status(500).json({ error: "An unknown error occurred" });
     }
-  }
+  };
 }
 
-export default BaceController22;
+export default BaceController;
+
+// class BaceController<T> implements Controller<T> {
+//   protected service: Service<T>;
+//   constructor(service: Service<T>) {
+//     this.service = service;
+//   }
+
+//   async create(req: Request, res: Response): Promise<Response> {
+//     try {
+//       const createData = req.body as ResourceData<T>;
+//       console.log(this); /// ---> undeifine
+//       const createdResource = await this.service.create(createData);
+//       return res.status(201).json(createdResource);
+//     } catch (error) {
+//       console.error(error); // Log the error for debugging
+//       return res.status(500).json({ error: "An unknown error occurred" });
+//     }
+//   }
+//   async getAll(req: Request, res: Response): Promise<Response> {
+//     try {
+//       console.log(this); /// ---> undeifine
+//       const resources = await this.service.getAll();
+//       return res.status(200).json(resources);
+//     } catch (error) {
+//       console.error(error);
+//       return res.status(500).json({ error: "An unknown error occurred" });
+//     }
+//   }
+// }
