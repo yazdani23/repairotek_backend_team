@@ -4,17 +4,17 @@ import ProjectService from "../../domain/services/ProjectService";
 import BaceController from "./BaseController";
 
 class ProjectController extends BaceController<ProjectDoc> {
+  private projectService = this.service as typeof ProjectService;
   constructor() {
     super(ProjectService);
   }
-  
+
   getProjectGallery = async (
     req: Request,
     res: Response
   ): Promise<Response> => {
     const projectId = req.params.id;
-    const projectService = this.service as typeof ProjectService;
-    const projectGallery = await projectService.getProjectGallery(projectId);
+    const projectGallery = await this.projectService.getProjectGallery(projectId);
     if (!projectGallery) {
       throw Error(`Project not found with id: ${projectId}`);
     }

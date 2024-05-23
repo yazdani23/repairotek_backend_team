@@ -10,5 +10,4 @@ projectRouter.delete("/projects/:id", ProjectsController.delete);
 projectRouter.get("/projects/gallery/:id", ProjectsController.getProjectGallery);
 
 
-
 export default projectRouter;

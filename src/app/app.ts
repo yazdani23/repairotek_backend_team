@@ -8,8 +8,8 @@ import loggerMiddleware from "./middlewares/loggerMiddleware";
 import errorHandlerMiddleware from "./middlewares/errorHandlerMiddleware";
 import "express-async-errors";
 
-const app: Application = express();
 dotenv.config();
+const app: Application = express();
 connentDB();
 app.use(cors());
 app.use(express.json());
@@ -24,6 +24,7 @@ const sessionMiddleware = session({
   resave: false,
   saveUninitialized: false,
 });
+
 
 // اضافه کردن middleware session به برنامه
 app.use(sessionMiddleware);
