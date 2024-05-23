@@ -1,14 +1,20 @@
+import logger from "../../utils/helpers/logger";
 import { ProjectDoc } from "../docs/Project";
+import { ProjectGalleryDoc } from "../docs/ProjectGallery";
+import ProjectGalleryModel from "../models/ProjectGalleryModel";
 import ProjectModel from "../models/ProjectModel";
 import BaseRepository from "./BaseRepository";
 
-class ProjectRepository extends BaseRepository<ProjectDoc> {
+
+
+class ProjectRepository extends BaseRepository<ProjectDoc>{
   constructor() {
     super(ProjectModel);
   }
   async getById(id: string): Promise<ProjectDoc | null> {
     try {
       return await this.model
+      
         .findById(id)
         //For two step jooing
         // .populate({
@@ -35,6 +41,12 @@ class ProjectRepository extends BaseRepository<ProjectDoc> {
     } catch (error) {
       throw new Error(`Failed to fetch data: ${error}`);
     }
+  }
+
+  async getGallery(projectId:string): Promise<ProjectGalleryDoc[] | null>{
+    const gallery = await ProjectGalleryModel.find({ projectId })
+    logger.info(gallery)
+    return gallery;
   }
 }
 

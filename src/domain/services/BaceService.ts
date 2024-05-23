@@ -1,20 +1,15 @@
 import Joi from "joi";
 import { Repository } from "../../interfaces/Repository";
 import { Service } from "../../interfaces/Service";
+import BaseRepository from "../repositories/BaseRepository";
 
 type ResourceData<T> = T;
 
 class BaseService<T> implements Service<T> {
-  protected repository: Repository<T>;
-  protected validateSchema: Joi.ObjectSchema<any>;
-
   constructor(
-    repository: Repository<T>,
-    validateSchema: Joi.ObjectSchema<any>
-  ) {
-    this.repository = repository;
-    this.validateSchema = validateSchema;
-  }
+    protected repository: BaseRepository<T>,
+    protected validateSchema: Joi.ObjectSchema<any>
+  ) {}
 
   async create(data: ResourceData<T>): Promise<ResourceData<T>> {
     const validationResult = this.validateSchema.validate(data);
@@ -44,7 +39,6 @@ class BaseService<T> implements Service<T> {
         return null; // Record not found
       }
       return await this.repository.update(id, data);
-
     } catch (error) {
       throw new Error(`Failed to update: ${error}`);
     }
@@ -80,8 +74,8 @@ class BaseService<T> implements Service<T> {
       // This example assumes a simple search by text
       return await this.repository
         .getAll()
-        .then((data) =>
-          data.filter((item) => JSON.stringify(item).includes(searchQuery))
+        .then((data: any) =>
+          data.filter((item: any) => JSON.stringify(item).includes(searchQuery))
         );
     } catch (error) {
       throw new Error(`Failed to search: ${error}`);
@@ -95,7 +89,7 @@ class BaseService<T> implements Service<T> {
       const filterProperty = Object.keys(filterCriteria)[0];
       const filterValue = filterCriteria[filterProperty];
       return await this.repository.getAll().then(
-        (data) => filterValue
+        (data: any) => filterValue
         //   data.filter((item) => item[filterProperty] === filterValue)
       );
     } catch (error) {

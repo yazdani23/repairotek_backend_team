@@ -14,11 +14,35 @@ const ProjectModel = generateSchema<ProjectDoc>("Project", {
   areaLength: { type: Number, required: true },
   areaWidth: { type: Number, required: true },
   areaHeight: { type: Number, required: true },
-  measureUnit:{type: String, enum: unit, default: "m"},
+  measureUnit: { type: String, enum: unit, default: "m" },
   description: { type: String, required: true },
   longitude: { type: Number, required: true },
   latitude: { type: Number, required: true },
   status: { type: String, enum: projectStatus, default: "UnderGoing" },
+  gallery: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "ProjectGalleryModel",
+    },
+  ],
+  materials: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "MaterialModel",
+    },
+  ],
+  equipments: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "EquipmentModel",
+    },
+  ],
+  employees: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "EmployeeModel",
+    },
+  ],
 });
 
 export default ProjectModel;

@@ -13,7 +13,7 @@ class UserController extends BaceController<UserDoc> {
     try {
       const onlineUsers: UserDoc[] = [];
       const sessions: any = req.sessionStore.all;
-      console.log(sessions);
+      // console.log(sessions);
       
       for (const sessionId in sessions) {
         if (sessions.hasOwnProperty(sessionId)) {
