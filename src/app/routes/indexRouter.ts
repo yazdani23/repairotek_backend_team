@@ -13,6 +13,7 @@ import cameraRouter from "./cameraRouter";
 import zoneRouter from "./zoneRouter";
 // import userZoneRouter from "./userZoneRouter";
 import permissionRouter from "./permissionRouter";
+import galleryRouter from "./galleryRouter";
 
 const indexRouter = express.Router();
 // const { index, notFound } = require("../controllers/indexController");
@@ -28,6 +29,9 @@ indexRouter.use(provinceRouter);
 indexRouter.use(roleRouter);
 indexRouter.use(cameraRouter);
 indexRouter.use(zoneRouter);
+indexRouter.use(galleryRouter);
+
+;
 // indexRouter.use(userZoneRouter);
 indexRouter.use(permissionRouter);
 // indexRouter.use("*", notFound);

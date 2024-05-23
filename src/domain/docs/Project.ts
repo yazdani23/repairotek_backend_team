@@ -14,4 +14,9 @@ export interface ProjectDoc extends Document {
   longitude: number;
   latitude: number;
   status: string; // Array of
+  gallery:[],
+  materials:[],
+  equipments:[],
+  employees:[],
+  reports:[]
 }

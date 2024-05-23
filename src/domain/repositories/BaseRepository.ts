@@ -4,11 +4,7 @@ import { Model } from "mongoose";
 type ResourceData<T> = T;
 
 class BaseRepository<T> implements Repository<T> {
-  protected readonly model: Model<T>;
-
-  constructor(model: Model<T>) {
-    this.model = model;
-  }
+  constructor(protected model: Model<T>) {}
 
   async create(data: ResourceData<T>): Promise<ResourceData<T>> {
     try {
@@ -40,10 +36,11 @@ class BaseRepository<T> implements Repository<T> {
   }
 
   // async update(id: string, newData: Partial<ResourceData<T>>): Promise<ResourceData<T> | null>
-   async update(id: string, newData: Partial<T>): Promise<T | null>
-   {      
+  async update(id: string, newData: Partial<T>): Promise<T | null> {
     try {
-         const updatedResource =await this.model.findByIdAndUpdate(id, newData, { new: true });
+      const updatedResource = await this.model.findByIdAndUpdate(id, newData, {
+        new: true,
+      });
       if (!updatedResource) {
         return null;
       }

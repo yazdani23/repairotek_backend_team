@@ -4,11 +4,12 @@ import connentDB from "../config/db";
 import cors from "cors";
 import indexRouter from "./routes/indexRouter";
 import session from "express-session";
-
+import loggerMiddleware from "./middlewares/loggerMiddleware";
+import errorHandlerMiddleware from "./middlewares/errorHandlerMiddleware";
+import "express-async-errors";
 
 const app: Application = express();
 dotenv.config();
-console.log("Starting ");
 connentDB();
 app.use(cors());
 app.use(express.json());
@@ -26,9 +27,10 @@ const sessionMiddleware = session({
 
 // اضافه کردن middleware session به برنامه
 app.use(sessionMiddleware);
+app.use(loggerMiddleware);
 
 app.use("/api", indexRouter)
 
-
+app.use(errorHandlerMiddleware);
 
 export default app;

@@ -7,6 +7,7 @@ projectRouter.get("/projects/:id", ProjectsController.getById);
 projectRouter.post("/projects", ProjectsController.create);
 projectRouter.put("/projects/:id", ProjectsController.update);
 projectRouter.delete("/projects/:id", ProjectsController.delete);
+projectRouter.get("/projects/gallery/:id", ProjectsController.getProjectGallery);
 
 
 

@@ -1,3 +1,4 @@
+import { Request, Response } from "express";
 import { ProjectDoc } from "../../domain/docs/Project";
 import ProjectService from "../../domain/services/ProjectService";
 import BaceController from "./BaseController";
@@ -6,6 +7,19 @@ class ProjectController extends BaceController<ProjectDoc> {
   constructor() {
     super(ProjectService);
   }
+  
+  getProjectGallery = async (
+    req: Request,
+    res: Response
+  ): Promise<Response> => {
+    const projectId = req.params.id;
+    const projectService = this.service as typeof ProjectService;
+    const projectGallery = await projectService.getProjectGallery(projectId);
+    if (!projectGallery) {
+      throw Error(`Project not found with id: ${projectId}`);
+    }
+    return res.json(projectGallery);
+  };
 }
 export default new ProjectController();
 
