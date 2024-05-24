@@ -9,7 +9,14 @@
     "start": "cross-env ENV_MODE=production node dist/index.js",
     "dev": "cross-env ENV_MODE=develop nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
     "test": "cross-env ENV_MODE=test mocha -r ts-node/register 'test/**/*.test.ts'",
-    "execute-file": "ts-node ./scripts/resourceScripts.ts resource_name"
+    
+    "execute_resource_file": "ts-node ./scripts/resourceGeneratScripts.ts resource_name",
+    "execute_doc_file": "ts-node ./scripts/docGeneratScript.ts doc_name",
+    "execute_model_file": "ts-node ./scripts/modelGeneratScript.ts model_name",
+    "execute_validation_file": "ts-node ./scripts/validationGeneratScript.ts validation_name",
+    "execute_repository_file": "ts-node ./scripts/repositoryGeneratScript.ts repository_name",
+    "execute_service_file": "ts-node ./scripts/serviceGeneratScript.ts service_name",
+    "execute_controller_file": "ts-node ./scripts/controllerGeneratScript.ts controller_name"
   },
   "keywords": [],
   "author": "",
