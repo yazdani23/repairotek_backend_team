@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import logger from "../utils/helpers/logger";
 
 const dbUrl =
   process.env.DB_URL_ATLAS || "mongodb://127.0.0.1:27017/repairotek_db";
@@ -7,9 +8,9 @@ const dbUrl =
 const connectDB = async () => {
   try {
     await mongoose.connect(dbUrl);
-    console.log("Connected to MongoDB");
+    logger.info("Connected to MongoDB");
   } catch (error) {
-    console.error("MongoDB connection error:", error);
+    logger.error("MongoDB connection error:", error);
   }
 };
 

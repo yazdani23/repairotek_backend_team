@@ -5,15 +5,16 @@ import ProjectValidationSchema from "../validations/ProjectValidation";
 import logger from "../../utils/helpers/logger";
 import { ProjectGalleryDoc } from "../docs/ProjectGallery";
 
-class ProjectService extends BaseService<ProjectDoc>  {
+class ProjectService extends BaseService<ProjectDoc> {
+  private projectRepository;
   constructor() {
     super(ProjectRepository, ProjectValidationSchema);
+    this.projectRepository = this.repository as typeof ProjectRepository;
   }
   async getProjectGallery(
     projectId: string
   ): Promise<ProjectGalleryDoc[] | null> {
-     const projectRepository = this.repository as typeof ProjectRepository;
-    const gallery = await projectRepository.getGallery(projectId);
+    const gallery = await this.projectRepository.getGallery(projectId);
     logger.info(gallery);
     return gallery;
   }
