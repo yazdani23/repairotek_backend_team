@@ -1,14 +1,11 @@
-
-
 import { InsuranceDoc } from "../docs/Insurance";
 
-import BaseService from "./BaceService";
+import BaseService from "./BaseService";
 import InsuranceRepository from "../repositories/InsuranceRepository";
 import InsuranceValidationSchema from "../validations/InsuranceValidation";
 
 class InsuranceService extends BaseService<InsuranceDoc> {
-  constructor(
-  ) {
+  constructor() {
     super(InsuranceRepository, InsuranceValidationSchema);
   }
 }

@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
 import UserService from "../../domain/services/UserService";
-import BaceController from "./BaseController";
+import BaseController from "./BaseController";
 import { UserDoc } from "../../domain/docs/User";
 
 // const UserController = crudControllerGenerator("User", UserService);
-class UserController extends BaceController<UserDoc> {
+class UserController extends BaseController<UserDoc> {
   constructor() {
     super(UserService);
   }
@@ -14,7 +14,7 @@ class UserController extends BaceController<UserDoc> {
       const onlineUsers: UserDoc[] = [];
       const sessions: any = req.sessionStore.all;
       // console.log(sessions);
-      
+
       for (const sessionId in sessions) {
         if (sessions.hasOwnProperty(sessionId)) {
           const sessionData = JSON.parse(sessions[sessionId]);
@@ -26,7 +26,6 @@ class UserController extends BaceController<UserDoc> {
               onlineUsers.push(user);
             }
           }
-
         }
       }
       return res.status(200).json(onlineUsers);

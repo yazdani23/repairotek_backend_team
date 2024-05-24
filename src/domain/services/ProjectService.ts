@@ -1,12 +1,12 @@
 import { ProjectDoc } from "../docs/Project";
-import BaseService from "./BaceService";
+import BaseService from "./BaseService";
 import ProjectRepository from "../repositories/ProjectRepository";
 import ProjectValidationSchema from "../validations/ProjectValidation";
 import logger from "../../utils/helpers/logger";
 import { ProjectGalleryDoc } from "../docs/ProjectGallery";
 
 class ProjectService extends BaseService<ProjectDoc> {
-  private projectRepository;
+  private projectRepository = this.repository as typeof ProjectRepository;
   constructor() {
     super(ProjectRepository, ProjectValidationSchema);
     this.projectRepository = this.repository as typeof ProjectRepository;

@@ -1,14 +1,11 @@
-
-
 import { EmployeeTimeCardDoc } from "../docs/EmployeeTimeCard";
 
-import BaseService from "./BaceService";
+import BaseService from "./BaseService";
 import EmployeeTimeCardRepository from "../repositories/EmployeeTimeCardRepository";
 import EmployeeTimeCardValidationSchema from "../validations/EmployeeTimeCardValidation";
 
 class EmployeeTimeCardService extends BaseService<EmployeeTimeCardDoc> {
-  constructor(
-  ) {
+  constructor() {
     super(EmployeeTimeCardRepository, EmployeeTimeCardValidationSchema);
   }
 }

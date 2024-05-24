@@ -1,11 +1,8 @@
-
-
 import { MaterialDoc } from "../../domain/docs/Material";
 import MaterialService from "../../domain/services/MaterialService";
-import BaceController from "./BaseController";
+import BaseController from "./BaseController";
 
-
-class MaterialController extends BaceController<MaterialDoc> {
+class MaterialController extends BaseController<MaterialDoc> {
   constructor() {
     super(MaterialService);
   }
