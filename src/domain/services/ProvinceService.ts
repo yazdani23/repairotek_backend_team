@@ -1,14 +1,11 @@
-
-
 import { ProvinceDoc } from "../docs/Province";
 
-import BaseService from "./BaceService";
+import BaseService from "./BaseService";
 import ProvinceRepository from "../repositories/ProvinceRepository";
 import ProvinceValidationSchema from "../validations/ProvinceValidation";
 
 class ProvinceService extends BaseService<ProvinceDoc> {
-  constructor(
-  ) {
+  constructor() {
     super(ProvinceRepository, ProvinceValidationSchema);
   }
 }

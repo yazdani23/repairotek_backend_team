@@ -1,14 +1,11 @@
-
-
 import { EquipmentDamageDoc } from "../docs/EquipmentDamage";
 
-import BaseService from "./BaceService";
+import BaseService from "./BaseService";
 import EquipmentDamageRepository from "../repositories/EquipmentDamageRepository";
 import EquipmentDamageValidationSchema from "../validations/EquipmentDamageValidation";
 
 class EquipmentDamageService extends BaseService<EquipmentDamageDoc> {
-  constructor(
-  ) {
+  constructor() {
     super(EquipmentDamageRepository, EquipmentDamageValidationSchema);
   }
 }

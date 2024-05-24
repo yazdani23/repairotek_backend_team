@@ -1,14 +1,11 @@
-
-
 import { MaterialDoc } from "../docs/Material";
 
-import BaseService from "./BaceService";
+import BaseService from "./BaseService";
 import MaterialRepository from "../repositories/MaterialRepository";
 import MaterialValidationSchema from "../validations/MaterialValidation";
 
 class MaterialService extends BaseService<MaterialDoc> {
-  constructor(
-  ) {
+  constructor() {
     super(MaterialRepository, MaterialValidationSchema);
   }
 }

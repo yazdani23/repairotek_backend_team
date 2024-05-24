@@ -1,8 +1,8 @@
 import { EquipmentDoc } from "../../domain/docs/Equipment";
 import EquipmentService from "../../domain/services/EquipmentService";
-import BaceController from "./BaseController";
+import BaseController from "./BaseController";
 
-class EquipmentController extends BaceController<EquipmentDoc> {
+class EquipmentController extends BaseController<EquipmentDoc> {
   constructor() {
     super(EquipmentService);
   }

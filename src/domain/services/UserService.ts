@@ -1,8 +1,7 @@
 import { UserDoc } from "../docs/User";
-import BaseService from "./BaceService";
+import BaseService from "./BaseService";
 import UserRepository from "../repositories/UserRepository";
 import UserValidationSchema from "../validations/UserValidation";
-
 
 class UserService extends BaseService<UserDoc> {
   constructor() {

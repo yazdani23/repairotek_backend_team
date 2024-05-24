@@ -1,12 +1,11 @@
-import BaceController from "./BaseController";
+import BaseController from "./BaseController";
 import ProjectGalleryService from "../../domain/services/ProjectGalleryService";
 import { ProjectGalleryDoc } from "../../domain/docs/ProjectGallery";
 
-class ProjectGalleryController extends BaceController<ProjectGalleryDoc> {
+class ProjectGalleryController extends BaseController<ProjectGalleryDoc> {
   constructor() {
     super(ProjectGalleryService);
   }
-
 }
 export default new ProjectGalleryController();
 

@@ -1,11 +1,10 @@
 import { RoleDoc } from "../docs/Role";
-import BaseService from "./BaceService";
+import BaseService from "./BaseService";
 import RoleRepository from "../repositories/RoleRepository";
 import RoleValidationSchema from "../validations/RoleValidation";
 
 class RoleService extends BaseService<RoleDoc> {
-  constructor(
-  ) {
+  constructor() {
     super(RoleRepository, RoleValidationSchema);
   }
 }

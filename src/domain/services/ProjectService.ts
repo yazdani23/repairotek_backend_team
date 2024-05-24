@@ -1,5 +1,5 @@
 import { ProjectDoc } from "../docs/Project";
-import BaseService from "./BaceService";
+import BaseService from "./BaseService";
 import ProjectRepository from "../repositories/ProjectRepository";
 import ProjectValidationSchema from "../validations/ProjectValidation";
 import logger from "../../utils/helpers/logger";
