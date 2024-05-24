@@ -1,13 +1,11 @@
 import { Request, Response } from "express";
 import { Controller } from "../../interfaces/Controller";
-import BaseService from "../../domain/services/BaceService";
+import BaseService from "../../domain/services/BaseService";
 
 type ResourceData<T> = T;
 
-class BaceController<T>  implements Controller<T>{
-
-  constructor( protected service: BaseService<T>) {
-  }
+class BaseController<T> implements Controller<T> {
+  constructor(protected service: BaseService<T>) {}
 
   getAll = async (req: Request, res: Response): Promise<Response> => {
     try {
@@ -23,7 +21,9 @@ class BaceController<T>  implements Controller<T>{
       const id = req.params.id;
       const resource = await this.service.getById(id);
       if (!resource) {
-        return res.status(404).json({ error: `not found resource by id ${id}` });
+        return res
+          .status(404)
+          .json({ error: `not found resource by id ${id}` });
       }
       return res.status(200).json(resource);
     } catch (error) {
@@ -110,9 +110,9 @@ class BaceController<T>  implements Controller<T>{
   };
 }
 
-export default BaceController;
+export default BaseController;
 
-// class BaceController<T> implements Controller<T> {
+// class BaseController<T> implements Controller<T> {
 //   protected service: Service<T>;
 //   constructor(service: Service<T>) {
 //     this.service = service;

@@ -1,14 +1,11 @@
-
-
 import { DepartmentTypeDoc } from "../docs/DepartmentType";
 
-import BaseService from "./BaceService";
+import BaseService from "./BaseService";
 import DepartmentTypeRepository from "../repositories/DepartmentTypeRepository";
 import DepartmentTypeValidationSchema from "../validations/DepartmentTypeValidation";
 
 class DepartmentTypeService extends BaseService<DepartmentTypeDoc> {
-  constructor(
-  ) {
+  constructor() {
     super(DepartmentTypeRepository, DepartmentTypeValidationSchema);
   }
 }

@@ -1,5 +1,5 @@
 import { EmployeeDoc } from "../docs/Employee";
-import BaseService from "./BaceService";
+import BaseService from "./BaseService";
 import EmployeeRepository from "../repositories/EmployeeRepository";
 import EmployeeValidationSchema from "../validations/EmployeeValidation";
 

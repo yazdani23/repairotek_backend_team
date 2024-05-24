@@ -1,14 +1,11 @@
-
-
 import { ZoneDoc } from "../docs/Zone";
 
-import BaseService from "./BaceService";
+import BaseService from "./BaseService";
 import ZoneRepository from "../repositories/ZoneRepository";
 import ZoneValidationSchema from "../validations/ZoneValidation";
 
 class ZoneService extends BaseService<ZoneDoc> {
-  constructor(
-  ) {
+  constructor() {
     super(ZoneRepository, ZoneValidationSchema);
   }
 }

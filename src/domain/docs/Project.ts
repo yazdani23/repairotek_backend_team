@@ -2,9 +2,9 @@ import { Document, Schema } from "mongoose";
 
 export interface ProjectDoc extends Document {
   projectCode: string;
-  userId: Schema.Types.ObjectId; 
+  userId: Schema.Types.ObjectId;
   title: string;
-  zoneId: Schema.Types.ObjectId; 
+  zoneId: Schema.Types.ObjectId;
   issueDateTime: Date;
   areaLength: number; // Number of
   areaWidth: number; // Number of
@@ -14,9 +14,9 @@ export interface ProjectDoc extends Document {
   longitude: number;
   latitude: number;
   status: string; // Array of
-  gallery:[],
-  materials:[],
-  equipments:[],
-  employees:[],
-  reports:[]
+  gallery: [];
+  materials: [];
+  equipments: [];
+  employees: [];
+  reports: [];
 }
