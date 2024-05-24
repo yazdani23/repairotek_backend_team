@@ -33,7 +33,6 @@ const createDocFile = async (resourceNameUC: string): Promise<void> => {
   }
 
   const docContent = `
-export default ${resourceNameUC}Doc;
 import { Document } from "mongoose";
 
 export interface ${resourceNameUC}Doc extends Document {
