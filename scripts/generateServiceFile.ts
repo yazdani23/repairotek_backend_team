@@ -1,8 +1,8 @@
 import * as fs from "fs/promises";
 import * as path from "path";
-import { SERVICES_PATH, doesFileExist } from "./commonScript";
+import { SERVICES_PATH, doesFileExist } from "./utils";
 
-export const createServiceFile = async (
+export const generateServiceFile = async (
   resourceNameUC: string,
   resourceNameLC: string
 ): Promise<void> => {

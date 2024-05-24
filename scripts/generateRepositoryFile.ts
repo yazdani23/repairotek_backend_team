@@ -1,8 +1,10 @@
 import * as fs from "fs/promises";
 import * as path from "path";
-import { REPOSITORIES_PATH, doesFileExist } from "./commonScript";
+import { REPOSITORIES_PATH, doesFileExist } from "./utils";
 
-export const createRepositoryFile = async (resourceNameUC: string): Promise<void> => {
+export const generateRepositoryFile = async (
+  resourceNameUC: string
+): Promise<void> => {
   const repositoryPath = path.join(
     REPOSITORIES_PATH,
     `${resourceNameUC}Repository.ts`

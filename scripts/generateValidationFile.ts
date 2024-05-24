@@ -1,8 +1,8 @@
 import * as fs from "fs/promises";
 import * as path from "path";
-import { VALIDATIONS_PATH, doesFileExist } from "./commonScript";
+import { VALIDATIONS_PATH, doesFileExist } from "./utils";
 
-export const createValidationFile = async (resourceNameUC: string): Promise<void> => {
+export const generateValidationFile = async (resourceNameUC: string): Promise<void> => {
   const validationPath = path.join(
     VALIDATIONS_PATH,
     `${resourceNameUC}Validation.ts`

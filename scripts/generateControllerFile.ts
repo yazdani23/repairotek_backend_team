@@ -1,8 +1,8 @@
 import * as fs from "fs/promises";
 import * as path from "path";
-import { CONTROLLERS_PATH, doesFileExist } from "./commonScript";
+import { CONTROLLERS_PATH, doesFileExist } from "./utils";
 
-export const createControllerFile = async (
+export const generateControllerFile = async (
   resourceNameUC: string,
   resourceNameLC: string
 ): Promise<void> => {
