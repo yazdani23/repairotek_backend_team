@@ -9,14 +9,13 @@
     "start": "cross-env ENV_MODE=production node dist/index.js",
     "dev": "cross-env ENV_MODE=develop nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
     "test": "cross-env ENV_MODE=test mocha -r ts-node/register 'test/**/*.test.ts'",
-    
-    "generate:doc": "ts-node ./scripts/main.ts make:doc resource_name",
-    "generate:model": "ts-node ./scripts/main.ts make:model resource_name",
-    "generate:validation": "ts-node ./scripts/main.ts make:validation resource_name",
-    "generate:repository": "ts-node ./scripts/main.ts make:repository resource_name",
-    "generate:service": "ts-node ./scripts/main.ts make:service resource_name",
-    "generate:controller": "ts-node ./scripts/main.ts make:controller resource_name",
-    "generate:all": "ts-node ./scripts/main.ts make:all resource_name"
+    "generate:doc": "ts-node ./scripts/main.ts",
+    "generate:model": "ts-node ./scripts/main.ts",
+    "generate:validation": "ts-node ./scripts/main.ts",
+    "generate:repository": "ts-node ./scripts/main.ts",
+    "generate:service": "ts-node ./scripts/main.ts",
+    "generate:controller": "ts-node ./scripts/main.ts",
+    "generate:all": "ts-node ./scripts/main.ts"
   },
   "keywords": [],
   "author": "",
@@ -36,6 +35,7 @@
     "typescript": "^5.4.3"
   },
   "dependencies": {
+    "commander": "^12.1.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",

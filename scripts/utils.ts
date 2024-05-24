@@ -12,6 +12,14 @@ export const isValidResourceName = (resourceName: string): boolean => {
   return /^[a-zA-Z0-9_]+$/.test(resourceName);
 };
 
+export const validateResourceName = (name: string) => {
+  if (!isValidResourceName(name)) {
+    console.error(
+      "Invalid resource name. Only letters, numbers, and underscores are allowed."
+    );
+    process.exit(1);
+  }
+};
 export const doesFileExist = async (filePath: string): Promise<boolean> => {
   try {
     await fs.access(filePath);
