@@ -8,6 +8,7 @@ import { generateControllerFile } from "./generateControllerFile";
 import { generateRouterFile } from "./generateRouterFile";
 import { validateResourceName } from "./utils";
 import { argv } from "process";
+import { generateSeederFile } from "./generateSeederFile";
 
 /// How To Use:
 
@@ -103,6 +104,16 @@ program
     ]);
   });
 
+program
+  .command("make:seeder <name>")
+  .description("Create a new seeder")
+  .action(async (name) => {
+    await generateFiles(name, [
+      async (resourceNameUC, resourceNameLC) =>
+        await generateSeederFile(resourceNameUC, resourceNameLC!),
+    ]);
+  });
+  
 program
   .command("make:all <name>")
   .description("Create all components")

@@ -1,4 +1,4 @@
-import { EquipmentDoc } from "../docs/Equipment";
+import { EquipmentDoc } from "../docs/EquipmentEmployee";
 import BaseService from "./BaseService";
 import EquipmentRepository from "../repositories/EquipmentRepository";
 import EquipmentValidationSchema from "../validations/EquipmentValidation";

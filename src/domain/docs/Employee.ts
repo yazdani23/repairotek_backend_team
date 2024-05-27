@@ -13,14 +13,14 @@ export interface EmployeeDoc extends Document {
   gender: Gender;
   firstName: string;
   lastName: string;
-  telephone: string;
+  telephone?: string;
   mobile: string; // Changed to string to support international phone numbers
   email: string;
   address: string;
-  profilePhoto: string; // Assuming profile photo is stored as a string (URL or file path)
-  hireDate: Date; // Date
-  jobId: Schema.Types.ObjectId; // Array of job ObjectIds
-  departmentId: Schema.Types.ObjectId; // Array of department ObjectIds
-  skillDescription: string;
-  description: string;
+  profilePhoto?: string; // Assuming profile photo is stored as a string (URL or file path)
+  hireDate?: Date; // Date
+  jobId?: Schema.Types.ObjectId; // Array of job ObjectIds
+  departmentId?: Schema.Types.ObjectId; // Array of department ObjectIds
+  skillDescription?: string;
+  description?: string;
 }

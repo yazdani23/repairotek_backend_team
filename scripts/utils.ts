@@ -8,6 +8,7 @@ export const REPOSITORIES_PATH = "src/domain/repositories";
 export const SERVICES_PATH = "src/domain/services";
 export const CONTROLLERS_PATH = "src/app/controllers";
 export const ROUTES_PATH = "src/app/routes";
+export const SEEDER_PATH = "src/domain/seeders";
 
 export const isValidResourceName = (resourceName: string): boolean => {
   return /^[a-zA-Z0-9_]+$/.test(resourceName);

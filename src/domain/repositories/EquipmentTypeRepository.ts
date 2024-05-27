@@ -1,12 +1,11 @@
-
-import { EquipmentTypeDoc } from "../docs/EquipmentType";
-import EquipmentTypeModel from "../models/EquipmentTypeModel";
+import { EquipmentTypeDoc } from "../docs/Equipment";
+import EquipmentTypeModel from "../models/EquipmentModel";
 import BaseRepository from "./BaseRepository";
 
 class EquipmentTypeRepository extends BaseRepository<EquipmentTypeDoc> {
- constructor(){
-    super(EquipmentTypeModel)
- }
+  constructor() {
+    super(EquipmentTypeModel);
+  }
 }
 
-export default  new EquipmentTypeRepository();
+export default new EquipmentTypeRepository();
