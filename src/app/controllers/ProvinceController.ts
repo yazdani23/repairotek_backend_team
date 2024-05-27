@@ -1,7 +1,12 @@
 
-
+import { ProvinceDoc } from "../../domain/docs/Province";
 import ProvinceService from "../../domain/services/ProvinceService";
-import crudControllerGenerator from "../../utils/generators/crudControllerGenerator";
+import BaseController from "./BaseController";
 
-const ProvinceController = crudControllerGenerator("Province", ProvinceService);
-export default ProvinceController;
+class ProvinceController extends BaseController<ProvinceDoc> {
+  private provinceService = this.service as typeof ProvinceService;
+  constructor() {
+    super(ProvinceService);
+  }
+}
+export default new ProvinceController();

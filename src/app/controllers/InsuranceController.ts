@@ -1,7 +1,12 @@
 
-
+import { InsuranceDoc } from "../../domain/docs/Insurance";
 import InsuranceService from "../../domain/services/InsuranceService";
-import crudControllerGenerator from "../../utils/generators/crudControllerGenerator";
+import BaseController from "./BaseController";
 
-const InsuranceController = crudControllerGenerator("Insurance", InsuranceService);
-export default InsuranceController;
+class InsuranceController extends BaseController<InsuranceDoc> {
+  private insuranceService = this.service as typeof InsuranceService;
+  constructor() {
+    super(InsuranceService);
+  }
+}
+export default new InsuranceController();

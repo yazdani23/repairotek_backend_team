@@ -1,7 +1,12 @@
 
-
+import { CameraDoc } from "../../domain/docs/Camera";
 import CameraService from "../../domain/services/CameraService";
-import crudControllerGenerator from "../../utils/generators/crudControllerGenerator";
+import BaseController from "./BaseController";
 
-const CameraController = crudControllerGenerator("Camera", CameraService);
-export default CameraController;
+class CameraController extends BaseController<CameraDoc> {
+  private cameraService = this.service as typeof CameraService;
+  constructor() {
+    super(CameraService);
+  }
+}
+export default new CameraController();

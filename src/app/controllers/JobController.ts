@@ -1,7 +1,12 @@
 
-
+import { JobDoc } from "../../domain/docs/Job";
 import JobService from "../../domain/services/JobService";
-import crudControllerGenerator from "../../utils/generators/crudControllerGenerator";
+import BaseController from "./BaseController";
 
-const JobController = crudControllerGenerator("Job", JobService);
-export default JobController;
+class JobController extends BaseController<JobDoc> {
+  private jobService = this.service as typeof JobService;
+  constructor() {
+    super(JobService);
+  }
+}
+export default new JobController();

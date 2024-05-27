@@ -1,7 +1,12 @@
 
-
+import { EquipmentTypeDoc } from "../../domain/docs/EquipmentType";
 import EquipmentTypeService from "../../domain/services/EquipmentTypeService";
-import crudControllerGenerator from "../../utils/generators/crudControllerGenerator";
+import BaseController from "./BaseController";
 
-const EquipmentTypeController = crudControllerGenerator("EquipmentType", EquipmentTypeService);
-export default EquipmentTypeController;
+class EquipmentTypeController extends BaseController<EquipmentTypeDoc> {
+  private equipmentTypeService = this.service as typeof EquipmentTypeService;
+  constructor() {
+    super(EquipmentTypeService);
+  }
+}
+export default new EquipmentTypeController();

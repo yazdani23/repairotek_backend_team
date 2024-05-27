@@ -1,7 +1,12 @@
 
-
+import { DepartmentTypeDoc } from "../../domain/docs/DepartmentType";
 import DepartmentTypeService from "../../domain/services/DepartmentTypeService";
-import crudControllerGenerator from "../../utils/generators/crudControllerGenerator";
+import BaseController from "./BaseController";
 
-const DepartmentTypeController = crudControllerGenerator("DepartmentType", DepartmentTypeService);
-export default DepartmentTypeController;
+class DepartmentTypeController extends BaseController<DepartmentTypeDoc> {
+  private departmentTypeService = this.service as typeof DepartmentTypeService;
+  constructor() {
+    super(DepartmentTypeService);
+  }
+}
+export default new DepartmentTypeController();

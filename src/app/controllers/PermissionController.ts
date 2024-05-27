@@ -1,7 +1,12 @@
 
-
+import { PermissionDoc } from "../../domain/docs/Permission";
 import PermissionService from "../../domain/services/PermissionService";
-import crudControllerGenerator from "../../utils/generators/crudControllerGenerator";
+import BaseController from "./BaseController";
 
-const PermissionController = crudControllerGenerator("Permission", PermissionService);
-export default PermissionController;
+class PermissionController extends BaseController<PermissionDoc> {
+  private permissionService = this.service as typeof PermissionService;
+  constructor() {
+    super(PermissionService);
+  }
+}
+export default new PermissionController();

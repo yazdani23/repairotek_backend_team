@@ -1,7 +1,12 @@
 
-
+import { UserZoneDoc } from "../../domain/docs/UserZone";
 import UserZoneService from "../../domain/services/UserZoneService";
-import crudControllerGenerator from "../../utils/generators/crudControllerGenerator";
+import BaseController from "./BaseController";
 
-const UserZoneController = crudControllerGenerator("UserZone", UserZoneService);
-export default UserZoneController;
+class UserZoneController extends BaseController<UserZoneDoc> {
+  private userZoneService = this.service as typeof UserZoneService;
+  constructor() {
+    super(UserZoneService);
+  }
+}
+export default new UserZoneController();

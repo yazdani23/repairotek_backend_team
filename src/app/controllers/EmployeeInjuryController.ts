@@ -1,7 +1,12 @@
 
-
+import { EmployeeInjuryDoc } from "../../domain/docs/EmployeeInjury";
 import EmployeeInjuryService from "../../domain/services/EmployeeInjuryService";
-import crudControllerGenerator from "../../utils/generators/crudControllerGenerator";
+import BaseController from "./BaseController";
 
-const EmployeeInjuryController = crudControllerGenerator("EmployeeInjury", EmployeeInjuryService);
-export default EmployeeInjuryController;
+class EmployeeInjuryController extends BaseController<EmployeeInjuryDoc> {
+  private employeeInjuryService = this.service as typeof EmployeeInjuryService;
+  constructor() {
+    super(EmployeeInjuryService);
+  }
+}
+export default new EmployeeInjuryController();

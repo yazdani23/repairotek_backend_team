@@ -1,7 +1,12 @@
 
-
+import { ReportDoc } from "../../domain/docs/Report";
 import ReportService from "../../domain/services/ReportService";
-import crudControllerGenerator from "../../utils/generators/crudControllerGenerator";
+import BaseController from "./BaseController";
 
-const ReportController = crudControllerGenerator("Report", ReportService);
-export default ReportController;
+class ReportController extends BaseController<ReportDoc> {
+  private reportService = this.service as typeof ReportService;
+  constructor() {
+    super(ReportService);
+  }
+}
+export default new ReportController();
