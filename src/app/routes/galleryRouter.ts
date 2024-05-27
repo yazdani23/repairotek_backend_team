@@ -1,12 +1,12 @@
 import express from "express";
-import GallerysController from "../controllers/ProjectGalleryController";
+import GalleryController from "../controllers/ProjectGalleryController";
 const galleryRouter = express.Router();
 
-// galleryRouter.get("/project/gallery", GallerysController.getAll);
-// galleryRouter.get("/project/gallery/:id", GallerysController.getById);
-galleryRouter.post("/project/gallery", GallerysController.create);
-galleryRouter.put("/project/gallery/:id", GallerysController.update);
-galleryRouter.delete("/project/gallery/:id", GallerysController.delete);
+// galleryRouter.get("/project/gallery", GalleryController.getAll);
+// galleryRouter.get("/project/gallery/:id", GalleryController.getById);
+galleryRouter.post("/project/gallery", GalleryController.create);
+galleryRouter.put("/project/gallery/:id", GalleryController.update);
+galleryRouter.delete("/project/gallery/:id", GalleryController.delete);
 
 
 export default galleryRouter;

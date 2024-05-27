@@ -31,7 +31,6 @@ app.use(sessionMiddleware);
 app.use(loggerMiddleware);
 
 app.use("/api", indexRouter)
-
 app.use(errorHandlerMiddleware);
 
 export default app;

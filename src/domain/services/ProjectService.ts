@@ -9,6 +9,7 @@ class ProjectService extends BaseService<ProjectDoc> {
   private projectRepository = this.repository as typeof ProjectRepository;
   constructor() {
     super(ProjectRepository, ProjectValidationSchema);
+    this.projectRepository = this.repository as typeof ProjectRepository;
   }
   async getProjectGallery(
     projectId: string
