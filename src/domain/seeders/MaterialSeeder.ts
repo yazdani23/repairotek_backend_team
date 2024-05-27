@@ -21,7 +21,7 @@ export class MaterialSeeder {
         materials.push({
           name: faker.commerce.productMaterial(),
           description: faker.commerce.productDescription(),
-          price: parseFloat(faker.commerce.price()),
+          price: parseFloat(faker.commerce.price({ min: 100, max: 200, dec: 2 })),
         });
       }
 

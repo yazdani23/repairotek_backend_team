@@ -1,28 +1,17 @@
-import { Document, Schema } from "mongoose";
-import { ProjectDoc } from "./Project";
+import { Schema } from "mongoose";
+import { UserDoc } from "./User";
 
-enum Gender {
-  Male = "Male",
-  Female = "Female",
-  Other = "Other",
-}
-
-export interface EmployeeDoc extends Document {
+export interface EmployeeDoc extends UserDoc {
   employeeCode: number;
-  gender: Gender;
-  firstName: string;
-  lastName: string;
-  telephone?: string;
-  mobile: string; // Changed to string to support international phone numbers
-  email: string;
-  address: string;
-  profilePhoto?: string;
-  roleId: Schema.Types.ObjectId;
-  password: string;
-  lastActivity?: number;
-  hireDate?: Date; // Date
-  jobId?: Schema.Types.ObjectId; // Array of job ObjectIds
-  departmentId?: Schema.Types.ObjectId; // Array of department ObjectIds
+  hireDate?: Date;
+  jobId?: Schema.Types.ObjectId;
   skillDescription?: string;
   description?: string;
+  dateOfBirth?: Date;
+  maritalStatus?: string; // وضعیت تأهل
+  yearsOfExperience?: number; // تعداد سال‌های تجربه کاری
+  contractType?: string; // نوع قرارداد
+  bankAccountInfo?: string; // اطلاعات حساب بانکی برای پرداخت حقوق
+  insuranceNumber?: string; // شماره بیمه
+  // departmentId?: Schema.Types.ObjectId; // Array of department ObjectIds
 }
