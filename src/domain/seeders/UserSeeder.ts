@@ -20,11 +20,10 @@ export class UserSeeder {
         throw new Error("No roles found in the database.");
 
       const users = Array.from({ length: batchSize }, () => ({
-        userCode: faker.number.int(),
         firstName: faker.person.firstName(),
         lastName: faker.person.lastName(),
+        gender: faker.person.sex(),
         email: faker.internet.email(),
-        webSite: faker.internet.url(),
         address: faker.location.secondaryAddress(),
         telephone: faker.phone.number(),
         mobile: faker.phone.number(),
@@ -32,6 +31,7 @@ export class UserSeeder {
         roleId: faker.helpers.arrayElement(roles).id,
         password: faker.internet.password(),
         lastActivity: faker.number.int(),
+        nationalId: faker.number.int(),
       }));
 
       await UserModel.insertMany(users);

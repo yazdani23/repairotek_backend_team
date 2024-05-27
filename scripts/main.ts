@@ -129,6 +129,8 @@ program
       async (resourceNameUC) => await generateDocFile(resourceNameUC),
       async (resourceNameUC) => await generateValidationFile(resourceNameUC),
       async (resourceNameUC) => await generateModelFile(resourceNameUC),
+      async (resourceNameUC, resourceNameLC) =>
+        await generateSeederFile(resourceNameUC, resourceNameLC!),
     ]);
   });
 

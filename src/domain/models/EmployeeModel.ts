@@ -3,18 +3,25 @@ import {toJsonSchema } from "../../utils/generators/modelGenerator";
 import UserModel from "./UserModel";
 import { EmployeeDoc } from "../docs/Employee";
 
+const maritalStatus=["Single", "Married", "Divorced", "Widowed"];
+const contractType = ["Permanent", "Temporary", "Contract"];
 const EmployeeModelSchema = new Schema<EmployeeDoc>({
   employeeCode: { type: Number, required: false },
-  gender: { type: String, required: true },
   hireDate: { type: Date, required: false },
   jobId: { type: Schema.Types.ObjectId, ref: "Job", required: false },
-  departmentId: {
-    type: Schema.Types.ObjectId,
-    ref: "Department",
-    required: false,
-  },
+  // departmentId: {
+  //   type: Schema.Types.ObjectId,
+  //   ref: "Department",
+  //   required: false,
+  // },
   skillDescription: { type: String, required: false },
   description: { type: String, required: false },
+  dateOfBirth: { type: Date, required: false },
+  maritalStatus: { type: String, enum: maritalStatus, required: false }, // وضعیت تأهل
+  yearsOfExperience: { type: Number, required: false }, // تعداد سال‌های تجربه کاری
+  contractType: { type: String, enum: contractType, required: false }, // نوع قرارداد
+  bankAccountInfo: string, // اطلاعات حساب بانکی برای پرداخت حقوق
+  insuranceNumber: string, // شماره بیمه
 });
 toJsonSchema(EmployeeModelSchema)
 
