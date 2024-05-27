@@ -1,9 +1,9 @@
 import { Schema } from "mongoose";
-import { EmployeeDoc } from "../docs/Employee";
-import { generateSchema } from "../../utils/generators/modelGenerator";
+import {toJsonSchema } from "../../utils/generators/modelGenerator";
 import UserModel from "./UserModel";
+import { EmployeeDoc } from "../docs/Employee";
 
-const EmployeeModelSchema = generateSchema<EmployeeDoc>("Employee", {
+const EmployeeModelSchema = new Schema<EmployeeDoc>({
   employeeCode: { type: Number, required: false },
   gender: { type: String, required: true },
   hireDate: { type: Date, required: false },
@@ -16,6 +16,7 @@ const EmployeeModelSchema = generateSchema<EmployeeDoc>("Employee", {
   skillDescription: { type: String, required: false },
   description: { type: String, required: false },
 });
+toJsonSchema(EmployeeModelSchema)
 
 const EmployeeModel = UserModel.discriminator(
   "EmployeeModel",
