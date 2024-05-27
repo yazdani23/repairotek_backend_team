@@ -1,4 +1,4 @@
-import { EquipmentDoc } from "../../domain/docs/Equipment";
+import { EquipmentDoc } from "../../domain/docs/EquipmentEmployee";
 import EquipmentService from "../../domain/services/EquipmentService";
 import BaseController from "./BaseController";
 

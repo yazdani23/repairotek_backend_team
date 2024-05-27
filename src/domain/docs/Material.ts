@@ -1,6 +1,7 @@
 import { Document } from "mongoose";
 
 export interface MaterialDoc extends Document {
-  title: string;
+  name: string;
   description: string;
+  price: number;
 }

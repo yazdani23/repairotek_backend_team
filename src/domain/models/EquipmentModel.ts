@@ -1,14 +1,11 @@
-import { Schema } from "mongoose";
-import { EquipmentDoc } from "../docs/Equipment";
 import { generateSchema } from "../../utils/generators/modelGenerator";
+import { EquipmentDoc } from "../docs/Equipment";
 
-
-const EquipmentModel = generateSchema<EquipmentDoc>("Equipment",
-{
-  employeeId: { type: Schema.Types.ObjectId,ref:"Employee", required: true },
-  equipmentTypeId: { type: Schema.Types.ObjectId,ref:"EquipmentType", required: true },
-  allocatedHours: { type: Number, required: true },
+const EquipmentModel = generateSchema<EquipmentDoc>("EquipmentType", {
+  name: { type: String, required: true },
+  equipmentModel: { type: String, required: true },
   description: { type: String, required: true },
+  pricePerHour: { type: Number, required: false },
 });
 
 export default EquipmentModel;

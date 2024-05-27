@@ -1,27 +1,26 @@
 import { Schema } from "mongoose";
 import { EmployeeDoc } from "../docs/Employee";
 import { generateSchema } from "../../utils/generators/modelGenerator";
+import UserModel from "./UserModel";
 
-const EmployeeModel = generateSchema<EmployeeDoc>("Employee", {
-  employeeCode: { type: Number, required: true },
-  // employees: [type: Schema.Types.employee, required: true],
-  gender: { type: Schema.Types.String, required: true },
-  firstName: { type: String, required: true },
-  lastName: { type: String, required: true },
-  telephone: { type: String, required: true },
-  mobile: { type: String, required: true },
-  email: { type: String, required: true }, //todo check
-  address: { type: String, required: true },
-  profilePhoto: { type: String, required: true }, //todo check
-  hireDate: { type: Date, required: true },
-  jobId: { type: Schema.Types.ObjectId, ref: "Job", required: true },
+const EmployeeModelSchema = generateSchema<EmployeeDoc>("Employee", {
+  employeeCode: { type: Number, required: false },
+  gender: { type: String, required: true },
+  hireDate: { type: Date, required: false },
+  jobId: { type: Schema.Types.ObjectId, ref: "Job", required: false },
   departmentId: {
     type: Schema.Types.ObjectId,
     ref: "Department",
-    required: true,
+    required: false,
   },
-  skillDescription: { type: String, required: true },
-  description: { type: String, required: true },
+  skillDescription: { type: String, required: false },
+  description: { type: String, required: false },
 });
+
+const EmployeeModel = UserModel.discriminator(
+  "EmployeeModel",
+  EmployeeModelSchema
+);
+
 
 export default EmployeeModel;

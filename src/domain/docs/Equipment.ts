@@ -1,8 +1,8 @@
-import { Document, Schema } from "mongoose";
+import { Document } from "mongoose";
 
 export interface EquipmentDoc extends Document {
-  employeeId: Schema.Types.ObjectId;
-  equipmentTypeId: Schema.Types.ObjectId;
-  allocatedHours: Number;
+  name: string;
+  equipmentModel: string;
   description: string;
+  pricePerHour?:number
 }
