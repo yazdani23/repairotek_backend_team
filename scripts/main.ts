@@ -5,6 +5,7 @@ import { generateModelFile } from "./generateModelFile";
 import { generateRepositoryFile } from "./generateRepositoryFile";
 import { generateServiceFile } from "./generateServiceFile";
 import { generateControllerFile } from "./generateControllerFile";
+import { generateRouterFile } from "./generateRouterFile";
 import { validateResourceName } from "./utils";
 import { argv } from "process";
 
@@ -83,7 +84,15 @@ program
         await generateServiceFile(resourceNameUC, resourceNameLC!),
     ]);
   });
-
+program
+  .command("make:route <name>")
+  .description("Create a new route")
+  .action(async (name) => {
+    await generateFiles(name, [
+      async (resourceNameUC, resourceNameLC) =>
+        await generateRouterFile(resourceNameUC, resourceNameLC!),
+    ]);
+  });
 program
   .command("make:controller <name>")
   .description("Create a new controller")
@@ -99,6 +108,8 @@ program
   .description("Create all components")
   .action(async (name) => {
     await generateFiles(name, [
+      async (resourceNameUC, resourceNameLC) =>
+        await generateRouterFile(resourceNameUC, resourceNameLC!),
       async (resourceNameUC, resourceNameLC) =>
         await generateControllerFile(resourceNameUC, resourceNameLC!),
       async (resourceNameUC, resourceNameLC) =>

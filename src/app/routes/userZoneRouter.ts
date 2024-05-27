@@ -1,13 +1,13 @@
 import  express from "express";
-import UserZonesController from "../controllers/UserZoneController";
+import UserZoneController from "../controllers/UserZoneController";
 
 const userZoneRouter = express.Router();
 
-userZoneRouter.get("/userZones", UserZonesController.getAll);
-userZoneRouter.get("/userZones/:id", UserZonesController.getById);
-userZoneRouter.post("/userZones", UserZonesController.create);
-userZoneRouter.put("/userZones/:id", UserZonesController.update);
-userZoneRouter.delete("/userZones/:id", UserZonesController.delete);
+userZoneRouter.get("/userZones", UserZoneController.getAll);
+userZoneRouter.get("/userZones/:id", UserZoneController.getById);
+userZoneRouter.post("/userZones", UserZoneController.create);
+userZoneRouter.put("/userZones/:id", UserZoneController.update);
+userZoneRouter.delete("/userZones/:id", UserZoneController.delete);
 
 
 export default userZoneRouter;

@@ -1,13 +1,12 @@
 import  express from "express";
-import PermissionsController from "../controllers/PermissionController";
+import PermissionController from "../controllers/PermissionController";
 
 const permissionRouter = express.Router();
-
-permissionRouter.get("/permissions", PermissionsController.getAll);
-permissionRouter.get("/permissions/:id", PermissionsController.getById);
-permissionRouter.post("/permissions", PermissionsController.create);
-permissionRouter.put("/permissions/:id", PermissionsController.update);
-permissionRouter.delete("/permissions/:id", PermissionsController.delete);
+permissionRouter.get("/permissions", PermissionController.getAll);
+permissionRouter.get("/permissions/:id", PermissionController.getById);
+permissionRouter.post("/permissions", PermissionController.create);
+permissionRouter.put("/permissions/:id", PermissionController.update);
+permissionRouter.delete("/permissions/:id", PermissionController.delete);
 
 
 export default permissionRouter;

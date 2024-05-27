@@ -15,6 +15,7 @@
     "generate:repository": "ts-node ./scripts/main.ts",
     "generate:service": "ts-node ./scripts/main.ts",
     "generate:controller": "ts-node ./scripts/main.ts",
+    "generate:router": "ts-node ./scripts/main.ts",
     "generate:all": "ts-node ./scripts/main.ts"
   },
   "keywords": [],
