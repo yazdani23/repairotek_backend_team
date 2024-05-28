@@ -19,6 +19,11 @@ const TimeCardEmployeeSchema = new Schema<TimeCardEmployeeDoc>(
     actualRestTime: { type: Number, required: true, default: 0 },
     wageRate: { type: Number, required: true },
     overTimePayRate: { type: Number, required: true },
+    taskId: {
+      type: Schema.Types.ObjectId,
+      ref: "Task",
+      required: false,
+    },
     createdBy: { type: Schema.Types.ObjectId, ref: "User", required: true },
     updatedBy: { type: Schema.Types.ObjectId, ref: "User", required: true },
   },

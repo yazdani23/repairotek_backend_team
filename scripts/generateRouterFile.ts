@@ -6,10 +6,10 @@ export const generateRouterFile = async (
   resourceNameUC: string,
   resourceNameLC: string
 ): Promise<void> => {
-  const routePath = path.join(ROUTES_PATH, `${resourceNameUC}Router.ts`);
+  const routePath = path.join(ROUTES_PATH, `${resourceNameLC}Router.ts`);
 
   if (await doesFileExist(routePath)) {
-    console.error(`${resourceNameUC}Route already exists at: ${routePath}`);
+    console.error(`${resourceNameLC}Route already exists at: ${routePath}`);
     return;
   }
 
@@ -30,7 +30,7 @@ export default ${resourceNameLC}Router;
 
   try {
     await fs.writeFile(routePath, routeContent);
-    console.log(`${resourceNameUC}Route created at: ${routePath}`);
+    console.log(`${resourceNameLC}Route created at: ${routePath}`);
   } catch (error) {
     console.error("Error creating Route:", error);
   }

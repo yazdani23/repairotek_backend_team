@@ -9,7 +9,6 @@ import employeeRouter from "./employeeRouter";
 import equipmentRouter from "./equipmentRouter";
 import roleRouter from "./roleRouter";
 import provinceRouter from "./provinceRouter";
-import cameraRouter from "./cameraRouter";
 import zoneRouter from "./zoneRouter";
 // import userZoneRouter from "./userZoneRouter";
 import permissionRouter from "./permissionRouter";
@@ -27,7 +26,6 @@ indexRouter.use(employeeRouter);
 indexRouter.use(equipmentRouter); 
 indexRouter.use(provinceRouter);
 indexRouter.use(roleRouter);
-indexRouter.use(cameraRouter);
 indexRouter.use(zoneRouter);
 indexRouter.use(galleryRouter);
 
