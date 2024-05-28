@@ -1,12 +1,11 @@
-
-import { DepartmentDoc } from "../docs/Department";
-import DepartmentModel from "../models/DepartmentModel";
+import { DepartmentDoc } from "../docs/unuse/Department";
+import DepartmentModel from "../models/unUse/DepartmentModel";
 import BaseRepository from "./BaseRepository";
 
 class DepartmentRepository extends BaseRepository<DepartmentDoc> {
- constructor(){
-    super(DepartmentModel)
- }
+  constructor() {
+    super(DepartmentModel);
+  }
 }
 
-export default  new DepartmentRepository();
+export default new DepartmentRepository();

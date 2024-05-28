@@ -1,4 +1,4 @@
-import { InsuranceDoc } from "../docs/Insurance";
+import { InsuranceDoc } from "../docs/unuse/Insurance";
 
 import BaseService from "./BaseService";
 import InsuranceRepository from "../repositories/InsuranceRepository";

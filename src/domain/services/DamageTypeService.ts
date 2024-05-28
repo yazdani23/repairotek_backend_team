@@ -1,5 +1,4 @@
-
-import { DamageTypeDoc } from "../docs/DamageType";
+import { DamageTypeDoc } from "../docs/unuse/DamageType";
 import BaseService from "./BaseService";
 import DamageTypeRepository from "../repositories/DamageTypeRepository";
 import DamageTypeValidationSchema from "../validations/DamageTypeValidation";

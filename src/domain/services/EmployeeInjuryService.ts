@@ -1,4 +1,4 @@
-import { EmployeeInjuryDoc } from "../docs/EmployeeInjury";
+import { EmployeeInjuryDoc } from "../docs/InjuryEmployeeReport";
 
 import BaseService from "./BaseService";
 import EmployeeInjuryRepository from "../repositories/EmployeeInjuryRepository";

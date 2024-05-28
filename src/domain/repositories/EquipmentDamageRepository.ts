@@ -1,5 +1,5 @@
-import { EquipmentDamageDoc } from "../docs/EquipmentDamage";
-import EquipmentDamageModel from "../models/EquipmentDamageModel";
+import { EquipmentDamageDoc } from "../docs/DamageEquipmentReport";
+import EquipmentDamageModel from "../models/DamageEquipmentReportModel";
 import BaseRepository from "./BaseRepository";
 
 class EquipmentDamageRepository extends BaseRepository<EquipmentDamageDoc> {

@@ -1,4 +1,4 @@
-import { CameraDoc } from "../docs/Camera";
+import { CameraDoc } from "../docs/unuse/Camera";
 
 import BaseService from "./BaseService";
 import CameraRepository from "../repositories/CameraRepository";

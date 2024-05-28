@@ -1,5 +1,4 @@
-
-import { DamageTypeDoc } from "../../domain/docs/DamageType";
+import { DamageTypeDoc } from "../../domain/docs/unuse/DamageType";
 import DamageTypeService from "../../domain/services/DamageTypeService";
 import BaseController from "./BaseController";
 

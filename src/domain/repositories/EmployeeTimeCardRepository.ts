@@ -1,12 +1,11 @@
-
-import { EmployeeTimeCardDoc } from "../docs/EmployeeTimeCard";
-import EmployeeTimeCardModel from "../models/EmployeeTimeCardModel";
+import { EmployeeTimeCardDoc } from "../docs/TimeCardEmployee";
+import EmployeeTimeCardModel from "../models/TimeCardModelEmployee";
 import BaseRepository from "./BaseRepository";
 
 class EmployeeTimeCardRepository extends BaseRepository<EmployeeTimeCardDoc> {
- constructor(){
-    super(EmployeeTimeCardModel)
- }
+  constructor() {
+    super(EmployeeTimeCardModel);
+  }
 }
 
-export default  new EmployeeTimeCardRepository();
+export default new EmployeeTimeCardRepository();

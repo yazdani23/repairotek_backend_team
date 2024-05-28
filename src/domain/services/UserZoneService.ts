@@ -1,4 +1,4 @@
-import { UserZoneDoc } from "../docs/UserZone";
+import { UserZoneDoc } from "../docs/unuse/UserZone";
 
 import BaseService from "./BaseService";
 import UserZoneRepository from "../repositories/UserZoneRepository";

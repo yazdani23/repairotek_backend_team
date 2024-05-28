@@ -1,6 +1,5 @@
-import { InsuranceDoc } from "../docs/Insurance";
-import { generateSchema } from "../../utils/generators/modelGenerator";
-
+import { InsuranceDoc } from "../../docs/unuse/Insurance";
+import { generateSchema } from "../../../utils/generators/modelGenerator";
 
 const InsuranceModel = generateSchema<InsuranceDoc>("Insurance", {
   title: { type: String, required: true },
@@ -10,5 +9,3 @@ const InsuranceModel = generateSchema<InsuranceDoc>("Insurance", {
 });
 
 export default InsuranceModel;
-
-  

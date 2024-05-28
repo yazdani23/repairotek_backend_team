@@ -1,4 +1,4 @@
-import { EquipmentDamageDoc } from "../docs/EquipmentDamage";
+import { EquipmentDamageDoc } from "../docs/DamageEquipmentReport";
 
 import BaseService from "./BaseService";
 import EquipmentDamageRepository from "../repositories/EquipmentDamageRepository";

@@ -3,7 +3,7 @@ import logger from "../../utils/helpers/logger";
 import EmployeeModel from "../models/EmployeeModel";
 import RoleModel from "../models/RoleModel";
 import JobModel from "../models/JobModel";
-import DepartmentModel from "../models/DepartmentModel";
+import DepartmentModel from "../models/unUse/DepartmentModel";
 
 export class EmployeeSeeder {
   static removeAllEmployees = async () => {
@@ -19,11 +19,11 @@ export class EmployeeSeeder {
     try {
       const roles = await RoleModel.find({});
       const jobs = await JobModel.find({});
-      const departments = await DepartmentModel.find({});
+      // const departments = await DepartmentModel.find({});
 
-      if (!roles.length || !jobs.length || !departments.length) {
+      if (!roles.length || !jobs.length) {
         logger.error(
-          "Please ensure that roles, jobs, and departments are populated before seeding employees."
+          "Please ensure that roles and jobs are populated before seeding employees."
         );
         return;
       }
@@ -56,7 +56,10 @@ export class EmployeeSeeder {
           skillDescription: faker.lorem.sentence(),
           description: faker.lorem.paragraph(),
           nationalId: faker.number.int({ min: 1000000000, max: 9999999999 }), // Assuming national ID is a 10-digit number
-          dateOfBirth: faker.date.past({years:30, refDate:"2024-01-01T00:00:00.000Z"}), // Random date of birth in the past 30 years
+          dateOfBirth: faker.date.past({
+            years: 30,
+            refDate: "2024-01-01T00:00:00.000Z",
+          }), // Random date of birth in the past 30 years
           maritalStatus: faker.helpers.arrayElement([
             "Single",
             "Married",
@@ -81,6 +84,8 @@ export class EmployeeSeeder {
           // departmentId: department.id,
         });
       }
+
+      await EmployeeModel.insertMany(employees);
       logger.info(batchSize + " employees seeded successfully.");
     } catch (error: any) {
       logger.error("Failed to seed employees: " + error.message);

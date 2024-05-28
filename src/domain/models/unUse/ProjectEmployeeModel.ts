@@ -1,6 +1,6 @@
 import { Schema } from "mongoose";
-import { ProjectEmployeeDoc } from "../docs/ProjectEmployee";
-import { generateSchema } from "../../utils/generators/modelGenerator";
+import { ProjectEmployeeDoc } from "../../docs/unuse/ProjectEmployee";
+import { generateSchema } from "../../../utils/generators/modelGenerator";
 
 const ProjectEmployeeSchema = generateSchema<ProjectEmployeeDoc>("ProjectEmployee",
   {

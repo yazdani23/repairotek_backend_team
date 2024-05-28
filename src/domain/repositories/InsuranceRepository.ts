@@ -1,12 +1,11 @@
-
-import { InsuranceDoc } from "../docs/Insurance";
-import InsuranceModel from "../models/InsuranceModel";
+import { InsuranceDoc } from "../docs/unuse/Insurance";
+import InsuranceModel from "../models/unUse/InsuranceModel";
 import BaseRepository from "./BaseRepository";
 
 class InsuranceRepository extends BaseRepository<InsuranceDoc> {
- constructor(){
-    super(InsuranceModel)
- }
+  constructor() {
+    super(InsuranceModel);
+  }
 }
 
-export default  new InsuranceRepository();
+export default new InsuranceRepository();

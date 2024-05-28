@@ -1,4 +1,4 @@
-import { EmployeeTimeCardDoc } from "../docs/EmployeeTimeCard";
+import { EmployeeTimeCardDoc } from "../docs/TimeCardEmployee";
 
 import BaseService from "./BaseService";
 import EmployeeTimeCardRepository from "../repositories/EmployeeTimeCardRepository";

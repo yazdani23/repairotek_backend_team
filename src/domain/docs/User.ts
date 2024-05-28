@@ -12,5 +12,6 @@ export interface UserDoc extends Document {
   roleId: Schema.Types.ObjectId;
   password: string;
   lastActivity?: number;
-  nationalId?: string; 
+  nationalId?: string;
+  permissions: Schema.Types.ObjectId[];//permissionIds
 }

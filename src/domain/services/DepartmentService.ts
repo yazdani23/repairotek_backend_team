@@ -1,4 +1,4 @@
-import { DepartmentDoc } from "../docs/Department";
+import { DepartmentDoc } from "../docs/unuse/Department";
 
 import BaseService from "./BaseService";
 import DepartmentRepository from "../repositories/DepartmentRepository";

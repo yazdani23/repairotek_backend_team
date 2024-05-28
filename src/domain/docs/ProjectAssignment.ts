@@ -1,10 +1,19 @@
-import { Document, Schema } from "mongoose";
+import { Document, Types } from "mongoose";
 
 export interface ProjectAssignmentDoc extends Document {
-  projectId: Schema.Types.ObjectId;
-  employeeId: Schema.Types.ObjectId;
-  equipmentId: Schema.Types.ObjectId;
-  assignDate: Date;
-  estimatedHourPerPerson: number;
+  projectId: Types.ObjectId;
+  employees: {
+    employeeId: Types.ObjectId;
+    estimatedCountHour: number;
+  }[];
+  materials?: {
+    materialId: Types.ObjectId;
+    estimatedValue: number;
+  }[];
+  equipments?: {
+    equipmentId: Types.ObjectId;
+    estimatedCountHour: number;
+  }[];
   description: string;
+  totalEstimatedCountDays?: number;
 }

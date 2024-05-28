@@ -1,6 +1,6 @@
 import { Schema } from "mongoose";
-import { EmployeeTimeCardLogDoc } from "../docs/EmployeeTimeCardLog";
-import { generateSchema } from "../../utils/generators/modelGenerator";
+import { EmployeeTimeCardLogDoc } from "../../docs/unuse/TimeCardLogEmployee";
+import { generateSchema } from "../../../utils/generators/modelGenerator";
 
 const EmployeeTimeCardLogModel = generateSchema<EmployeeTimeCardLogDoc>(
   "EmployeeTimeCard",

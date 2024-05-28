@@ -16,7 +16,9 @@ export class RoleSeeder {
   static insertRoles = async () => {
     try {
       const roleNames = [
-        "Administrator",
+        "Admin",
+        "User",
+        "Employee",
         "Editor",
         "Viewer",
         "Moderator",

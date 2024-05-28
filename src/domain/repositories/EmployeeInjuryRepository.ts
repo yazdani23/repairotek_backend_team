@@ -1,12 +1,11 @@
-
-import { EmployeeInjuryDoc } from "../docs/EmployeeInjury";
-import EmployeeInjuryModel from "../models/EmployeeInjuryModel";
+import { EmployeeInjuryDoc } from "../docs/InjuryEmployeeReport";
+import EmployeeInjuryModel from "../models/InjuryEmployeeReportModel";
 import BaseRepository from "./BaseRepository";
 
 class EmployeeInjuryRepository extends BaseRepository<EmployeeInjuryDoc> {
- constructor(){
-    super(EmployeeInjuryModel)
- }
+  constructor() {
+    super(EmployeeInjuryModel);
+  }
 }
 
-export default  new EmployeeInjuryRepository();
+export default new EmployeeInjuryRepository();

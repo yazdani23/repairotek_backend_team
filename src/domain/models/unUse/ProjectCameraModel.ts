@@ -1,5 +1,5 @@
 import { Schema } from "mongoose";
-import { ProjectCameraDoc } from "../docs/ProjectCamera";
+import { ProjectCameraDoc } from "../docs/unuse/ProjectCamera";
 import { generateSchema } from "../../utils/generators/modelGenerator";
 
 const ProjectCameraModel = generateSchema <ProjectCameraDoc>("ProjectCamera",

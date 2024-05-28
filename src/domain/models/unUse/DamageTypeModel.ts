@@ -1,10 +1,8 @@
-import { InjuryTypeDoc } from "../docs/InjuryType";
+import { DamageTypeDoc } from "../docs/unuse/DamageType";
 import { generateSchema } from "../../utils/generators/modelGenerator";
 
-const InjuryTypeModel = generateSchema<InjuryTypeDoc>("InjuryType",
-{
+const DamageTypeModel = generateSchema<DamageTypeDoc>("DamageType", {
   title: { type: String, required: true },
   description: { type: String, required: true },
 });
-
-export default InjuryTypeModel;
+export default DamageTypeModel;

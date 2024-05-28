@@ -1,12 +1,11 @@
-
-import { UserZoneDoc } from "../docs/UserZone";
-import UserZoneModel from "../models/UserZoneModel";
+import { UserZoneDoc } from "../docs/unuse/UserZone";
+import UserZoneModel from "../models/unUse/UserZoneModel";
 import BaseRepository from "./BaseRepository";
 
 class UserZoneRepository extends BaseRepository<UserZoneDoc> {
- constructor(){
-    super(UserZoneModel)
- }
+  constructor() {
+    super(UserZoneModel);
+  }
 }
 
-export default  new UserZoneRepository();
+export default new UserZoneRepository();
