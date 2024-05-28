@@ -12,9 +12,9 @@ const InjuryEmployeeReporSchema = new Schema<InjuryEmployeeReportDoc>(
   }
 );
 
-const InjuryEmployeeReporModel = ReportModel.discriminator(
+const InjuryEmployeeReportModel = ReportModel.discriminator(
   "InjuryEmployeeRepor",
   InjuryEmployeeReporSchema
 );
 
-export default InjuryEmployeeReporModel;
+export default InjuryEmployeeReportModel;

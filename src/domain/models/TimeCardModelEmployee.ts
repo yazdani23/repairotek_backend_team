@@ -1,7 +1,7 @@
 import { Schema, model } from "mongoose";
 import { TimeCardEmployeeDoc } from "../docs/TimeCardEmployee";
 
-const EmployeeTimeCardSchema = new Schema<TimeCardEmployeeDoc>(
+const TimeCardEmployeeSchema = new Schema<TimeCardEmployeeDoc>(
   {
     employeeId: {
       type: Schema.Types.ObjectId,
@@ -28,7 +28,7 @@ const EmployeeTimeCardSchema = new Schema<TimeCardEmployeeDoc>(
 );
 
 // Virtual function to calculate total scheduled work time
-EmployeeTimeCardSchema.virtual("totalScheduledWorkTime").get(function (
+TimeCardEmployeeSchema.virtual("totalScheduledWorkTime").get(function (
   this: TimeCardEmployeeDoc
 ) {
   const start = new Date(this.scheduledStartTime).getTime();
@@ -38,7 +38,7 @@ EmployeeTimeCardSchema.virtual("totalScheduledWorkTime").get(function (
 });
 
 // Virtual function to calculate total actual work time
-EmployeeTimeCardSchema.virtual("totalActualWorkTime").get(function (
+TimeCardEmployeeSchema.virtual("totalActualWorkTime").get(function (
   this: TimeCardEmployeeDoc
 ) {
   const start = new Date(this.actualStartTime).getTime();
@@ -48,7 +48,7 @@ EmployeeTimeCardSchema.virtual("totalActualWorkTime").get(function (
 });
 
 // Pre-save validation to ensure valid start and end times
-EmployeeTimeCardSchema.pre<TimeCardEmployeeDoc>("save", function (next) {
+TimeCardEmployeeSchema.pre<TimeCardEmployeeDoc>("save", function (next) {
   const scheduledStart = new Date(this.scheduledStartTime);
   const scheduledEnd = new Date(this.scheduledEndTime);
   const actualStart = new Date(this.actualStartTime);
@@ -61,14 +61,14 @@ EmployeeTimeCardSchema.pre<TimeCardEmployeeDoc>("save", function (next) {
 });
 
 // Adding index to improve query performance
-EmployeeTimeCardSchema.index(
+TimeCardEmployeeSchema.index(
   { employeeId: 1, timeCardDate: 1 },
   { unique: true }
 );
 
-const EmployeeTimeCardModel = model<TimeCardEmployeeDoc>(
-  "EmployeeTimeCard",
-  EmployeeTimeCardSchema
+const TimeCardEmployeeModel = model<TimeCardEmployeeDoc>(
+  "TimeCardEmployee",
+  TimeCardEmployeeSchema
 );
 
-export default EmployeeTimeCardModel;
+export default TimeCardEmployeeModel;
