@@ -1,7 +1,12 @@
 
-
+import { ProjectCostDoc } from "../../domain/docs/ProjectCost";
 import ProjectCostService from "../../domain/services/ProjectCostService";
-import crudControllerGenerator from "../../utils/generators/crudControllerGenerator";
+import BaseController from "./BaseController";
 
-const ProjectCostController = crudControllerGenerator("ProjectCost", ProjectCostService);
-export default ProjectCostController;
+class ProjectCostController extends BaseController<ProjectCostDoc> {
+  private projectCostService = this.service as typeof ProjectCostService;
+  constructor() {
+    super(ProjectCostService);
+  }
+}
+export default new ProjectCostController();

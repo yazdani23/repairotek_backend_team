@@ -13,6 +13,7 @@ export interface TimeCardEmployeeDoc extends Document {
   actualRestTime: number; // in minutes
   wageRate: number;
   overTimePayRate: number;
+  taskId?: Schema.Types.ObjectId;
   createdBy: Schema.Types.ObjectId;
   updatedBy: Schema.Types.ObjectId;
 }
