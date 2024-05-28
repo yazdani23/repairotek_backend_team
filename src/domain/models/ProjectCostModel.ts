@@ -2,22 +2,109 @@ import { Schema } from "mongoose";
 import { ProjectCostDoc } from "../docs/ProjectCost";
 import { generateSchema } from "../../utils/generators/modelGenerator";
 
-const registrant = ["user", "employee"];
 const ProjectCostModel = generateSchema<ProjectCostDoc>("ProjectCost", {
-  projectId: { type: Schema.Types.ObjectId, ref:"Project",required: true },
-  materialId: { type: Schema.Types.ObjectId,ref:"Material", required: true },
+  projectId: { type: Schema.Types.ObjectId, ref: "Project", required: true },
+  materials: [
+    {
+      materialId: {
+        type: Schema.Types.ObjectId,
+        ref: "Material",
+        required: true,
+      },
+      value: {
+        type: Number,
+        required: true,
+      },
+      costPerUnit: {
+        type: Number,
+        required: true,
+      },
+    },
+  ],
+  equipments: [
+    {
+      equipmentId: {
+        type: Schema.Types.ObjectId,
+        ref: "Equipment",
+        required: true,
+      },
+      countHour: {
+        type: Number,
+        required: true,
+      },
+      costPerHour: {
+        type: Number,
+        required: true,
+      },
+    },
+  ],
+  employees: [
+    {
+      employeeId: {
+        type: Schema.Types.ObjectId,
+        ref: "Employee",
+        required: true,
+      },
+      countHour: {
+        type: Number,
+        required: true,
+      },
+      costPerHour: {
+        type: Number,
+        required: true,
+      },
+    },
+  ],
   costDate: { type: Date, required: true },
-  unitCount: { type: Number, required: true },
-  unitCost: { type: Number, required: true },
   totalCost: { type: Number, required: true },
-  //Todo: chose one of these
-  costRegistrantId: { type: Schema.Types.ObjectId,ref:"User,Employee", required: true },
-  costRegistrantType: { type: String, enum: registrant, default: "user" },
-  docs: [{ type: ImageData, required: true }], //docs for cost that were scaned
 });
 
 
 export default ProjectCostModel;
  
+
+// // Subdocument Schema برای مواد
+// const materialSchema = new Schema({
+//   materialId: { type: Schema.Types.ObjectId, ref: "Material", required: true },
+//   value: { type: Number, required: true },
+//   costPerUnit: { type: Number, required: true },
+// }, { _id: false });
+
+// // Subdocument Schema برای تجهیزات
+// const equipmentSchema = new Schema({
+//   equipmentId: { type: Schema.Types.ObjectId, ref: "Equipment", required: true },
+//   countHour: { type: Number, required: true },
+//   costPerHour: { type: Number, required: true },
+// }, { _id: false });
+
+// // Subdocument Schema برای کارمندان
+// const employeeSchema = new Schema({
+//   employeeId: { type: Schema.Types.ObjectId, ref: "Employee", required: true },
+//   countHour: { type: Number, required: true },
+//   costPerHour: { type: Number, required: true },
+// }, { _id: false });
+
+// // تعریف Schema اصلی
+// const projectCostSchema = new Schema<ProjectCostDoc>(
+//   {
+//     projectId: {
+//       type: Schema.Types.ObjectId,
+//       ref: "Project",
+//       required: true,
+//       index: true,
+//     },
+//     materials: [materialSchema],
+//     equipments: [equipmentSchema],
+//     employees: [employeeSchema],
+//     costDate: { type: Date, required: true },
+//     totalCost: { type: Number, required: true },
+//   },
+//   {
+//     timestamps: true, // برای افزودن createdAt و updatedAt
+//   }
+// );
+
+// const ProjectCostModel = generateSchema<ProjectCostDoc>("ProjectCost", projectCostSchema);
+// export default ProjectCostModel;
  
   

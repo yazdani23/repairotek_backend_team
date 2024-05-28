@@ -3,7 +3,7 @@ import logger from "../../utils/helpers/logger";
 import ProjectGalleryModel from "../models/ProjectGalleryModel";
 import ProjectModel from "../models/ProjectModel";
 import UserModel from "../models/UserModel";
-import MediaSubjectModel from "../models/MediaSubjectModel";
+import MediaSubjectModel from "../models/ReportSubjectModel";
 
 export class ProjectGallerySeeder {
   static removeAllProjectGallerys = async () => {

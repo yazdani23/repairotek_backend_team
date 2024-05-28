@@ -20,6 +20,10 @@ const UserModel = generateSchema<UserDoc>("User", {
   password: { type: String, required: true },
   lastActivity: { type: Number },
   nationalId: { type: String },
+  permissions: [{
+     type: Schema.Types.ObjectId//permissionId
+    , ref: "Permission" 
+  }],
 });
 
 export default UserModel;

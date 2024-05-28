@@ -3,11 +3,12 @@ import { generateSchema } from "../../utils/generators/modelGenerator";
 import { Schema } from "mongoose";
 
 const PermissionModel = generateSchema<PermissionDoc>("Permission", {
-  name: { type: String, required: true },
-  description: { type: String, required: false, default: "" }, // Optional with default empty string
-  resource: { type: String, required: true },
-  action: { type: String, required: true },
-  roleIds: [{ type: Schema.Types.ObjectId, ref: "Role", required: true }],
+  userId: { type: Schema.Types.ObjectId, ref: "User", required: true },
+  resourceId: { type: Schema.Types.ObjectId, ref: "Resource", required: true },
+  canRead: { type: Boolean, default: false },
+  canWrite: { type: Boolean, default: false },
+  canEdit: { type: Boolean, default: false },
+  canDelete: { type: Boolean, default: false },
 });
 
 export default PermissionModel;

@@ -1,5 +1,5 @@
-import { EquipmentDoc } from "../docs/EquipmentEmployee";
-import EquipmentModel from "../models/EquipmentEmployeeModel";
+import { EquipmentDoc } from "../docs/Equipment";
+import EquipmentModel from "../models/EquipmentModel";
 import BaseRepository from "./BaseRepository";
 
 class EquipmentRepository extends BaseRepository<EquipmentDoc> {
