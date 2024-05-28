@@ -4,7 +4,6 @@ import AdminModel from "../models/AdminModel";
 import RoleModel from "../models/RoleModel";
 
 export class AdminSeeder {
-  
   static removeAllAdmins = async () => {
     try {
       await AdminModel.deleteMany({});
@@ -17,25 +16,48 @@ export class AdminSeeder {
   static insertAdmins = async (batchSize = 1) => {
     try {
       const adminRole = await RoleModel.findOne({ name: "Admin" });
+      if (!adminRole) {
+        logger.error(
+          "Please ensure that Admin roles is populated before seeding Admin User."
+        );
+        return;
+      }
       const admins = [];
 
       for (let i = 0; i < batchSize; i++) {
-        admins.push({
-          firstName: faker.person.firstName(),
-          lastName: faker.person.lastName(),
-          gender: faker.person.sex(),
-          email: faker.internet.email(),
-          address: faker.location.secondaryAddress(),
-          telephone: faker.phone.number(),
-          mobile: faker.phone.number(),
-          profilePhoto: faker.image.avatar(),
-          roleId: adminRole?.id,
-          password: faker.internet.password(),
-          lastActivity: faker.number.int(),
-          nationalId: faker.number.int({ min: 1000000000, max: 9999999999 }), // Assuming national ID is a 10-digit number
-        });
+        admins.push(
+          {
+            firstName: "Shervin",
+            lastName: "Sheikh",
+            gender: "male",
+            email: "shervin.sheikh@gmail.com",
+            address: "Apt. 689",
+            telephone: "221.974.4101 x383",
+            mobile: "1-780-453-5196 x59913",
+            profilePhoto: "https://avatars.githubusercontent.com/u/94115880",
+            roleId: adminRole.id,
+            password: "AHjuQBdLrScGLUe",
+            lastActivity: 5583722709516288,
+            nationalId: "4120253265",
+            permissions: [],
+          },
+          {
+            firstName: "Zahra",
+            lastName: "Yazdani",
+            gender: "female",
+            email: "z.yazdani623@gmail.com",
+            address: "Apt. 689",
+            telephone: "221.974.4101 x383",
+            mobile: "1-780-453-5196 x59913",
+            profilePhoto: "https://avatars.githubusercontent.com/u/94115881",
+            roleId: adminRole.id,
+            password: "AHjuQBdLrScGLUe",
+            lastActivity: 5583722709516288,
+            nationalId: "4120253267",
+            permissions: [],
+          }
+        );
       }
-
 
       await AdminModel.insertMany(admins);
       logger.info(batchSize + " admins seeded successfully.");

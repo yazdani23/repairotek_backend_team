@@ -1,9 +1,9 @@
 import { Schema } from "mongoose";
 import { ProjectDoc } from "../docs/Project";
 import { generateSchema } from "../../utils/generators/modelGenerator";
+import { UnitsProjectArea } from "../../utils/constant/UnitsProjectArea";
+import { StatusProject } from "../../utils/constant/StatusProject";
 
-const projectStatus = ["UnderGoing", "Fail", "OnHold", "Compeleted", ""];
-const unit = ["cm", "m", "in", "ft"];
 
 const ProjectModel = generateSchema<ProjectDoc>("Project", {
   projectCode: { type: Number, required: true },
@@ -14,11 +14,11 @@ const ProjectModel = generateSchema<ProjectDoc>("Project", {
   areaLength: { type: Number, required: true },
   areaWidth: { type: Number, required: true },
   areaHeight: { type: Number, required: true },
-  measureUnit: { type: String, enum: unit, default: "m" },
+  measureUnit: { type: String, enum: UnitsProjectArea, default: "m" },
   description: { type: String, required: false },
   longitude: { type: Number, required: true },
   latitude: { type: Number, required: true },
-  status: { type: String, enum: projectStatus, default: "UnderGoing" },
+  status: { type: String, enum: StatusProject, default: "UnderGoing" },
   materials: [
     {
       type: Schema.Types.ObjectId,

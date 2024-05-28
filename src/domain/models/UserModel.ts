@@ -1,12 +1,8 @@
 import { Schema } from "mongoose";
 import { UserDoc } from "../docs/User";
 import { generateSchema } from "../../utils/generators/modelGenerator";
+import { Gender } from "../../utils/constant/enums/Gender";
 
-enum Gender {
-  Male = "Male",
-  Female = "Female",
-  Other = "Other",
-}
 const UserModel = generateSchema<UserDoc>("User", {
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },

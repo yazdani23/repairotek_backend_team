@@ -5,4 +5,5 @@ export interface MaterialDoc extends Document {
   description: string;
   pricePerUnit?: number;
   value:number;
+  unit:string;
 }

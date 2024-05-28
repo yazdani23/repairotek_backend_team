@@ -4,6 +4,8 @@ import EmployeeModel from "../models/EmployeeModel";
 import RoleModel from "../models/RoleModel";
 import JobModel from "../models/JobModel";
 import DepartmentModel from "../models/unUse/DepartmentModel";
+import { ContractType } from "../../utils/constant/ContractType";
+import { MaritalStatus } from "../../utils/constant/MaritalStatus";
 
 export class EmployeeSeeder {
   static removeAllEmployees = async () => {
@@ -17,13 +19,12 @@ export class EmployeeSeeder {
 
   static insertEmployees = async (batchSize = 10) => {
     try {
-      const roles = await RoleModel.find({});
+      const role = await RoleModel.findOne({ name: "Employee" });
       const jobs = await JobModel.find({});
-      // const departments = await DepartmentModel.find({});
 
-      if (!roles.length || !jobs.length) {
+      if (!role || !jobs.length) {
         logger.error(
-          "Please ensure that roles and jobs are populated before seeding employees."
+          "Please ensure that role and jobs are populated before seeding employees."
         );
         return;
       }
@@ -31,12 +32,8 @@ export class EmployeeSeeder {
       const employees = [];
 
       for (let i = 0; i < batchSize; i++) {
-        // const role = faker.helpers.arrayElement(roles).id;
         // const job = faker.helpers.arrayElement(jobs).id;
-        const role = roles[Math.floor(Math.random() * roles.length)];
         const job = jobs[Math.floor(Math.random() * jobs.length)];
-        // const department =
-        //   departments[Math.floor(Math.random() * departments.length)];
 
         employees.push({
           firstName: faker.person.firstName(),
@@ -50,28 +47,20 @@ export class EmployeeSeeder {
           roleId: role.id,
           password: faker.internet.password(),
           lastActivity: faker.date.recent().getTime(),
+          nationalId: faker.number.int({ min: 1000000000, max: 9999999999 }), // Assuming national ID is a 10-digit number
+          permissions: [],
           employeeCode: faker.number.int({ min: 10000 }),
           hireDate: faker.date.past(),
           jobId: job.id,
           skillDescription: faker.lorem.sentence(),
           description: faker.lorem.paragraph(),
-          nationalId: faker.number.int({ min: 1000000000, max: 9999999999 }), // Assuming national ID is a 10-digit number
           dateOfBirth: faker.date.past({
             years: 30,
             refDate: "2024-01-01T00:00:00.000Z",
           }), // Random date of birth in the past 30 years
-          maritalStatus: faker.helpers.arrayElement([
-            "Single",
-            "Married",
-            "Divorced",
-            "Widowed",
-          ]),
+          maritalStatus: faker.helpers.arrayElement(MaritalStatus),
           yearsOfExperience: faker.number.int({ min: 1, max: 40 }),
-          contractType: faker.helpers.arrayElement([
-            "Permanent",
-            "Temporary",
-            "Contract",
-          ]),
+          contractType: faker.helpers.arrayElement(ContractType),
           bankAccountInfo: `
             Credit Card Number:${faker.finance.creditCardNumber(
               "63[7-9]#-####-####-###L"
@@ -81,7 +70,7 @@ export class EmployeeSeeder {
           insuranceNumber: faker.number
             .int({ min: 1000000000, max: 9999999999 })
             .toString(), // Assuming insurance number is a 10-digit number
-          // departmentId: department.id,
+          
         });
       }
 

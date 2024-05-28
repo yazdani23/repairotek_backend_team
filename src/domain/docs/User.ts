@@ -1,4 +1,5 @@
 import { Document, Schema } from "mongoose";
+import { RoleDoc } from "./Role";
 
 export interface UserDoc extends Document {
   firstName: string;
@@ -9,9 +10,9 @@ export interface UserDoc extends Document {
   telephone: string;
   mobile: string;
   profilePhoto: string; // Assuming profile photo is stored as a string (URL or file path)
-  roleId: Schema.Types.ObjectId;
+  roleId: RoleDoc | Schema.Types.ObjectId;
   password: string;
   lastActivity?: number;
   nationalId?: string;
-  permissions: Schema.Types.ObjectId[];//permissionIds
+  permissions: Schema.Types.ObjectId[]; //permissionIds
 }

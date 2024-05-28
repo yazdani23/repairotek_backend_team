@@ -3,7 +3,6 @@ import logger from "../../utils/helpers/logger";
 import JobModel from "../models/JobModel";
 
 export class JobSeeder {
-  
   static removeAllJobs = async () => {
     try {
       await JobModel.deleteMany({});
@@ -13,21 +12,39 @@ export class JobSeeder {
     }
   };
 
-  static insertJobs = async (batchSize = 10) => {
+  static insertJobs = async (batchSize = 15) => {
     try {
+      const roadConstructionJobs = [
+        "Civil Engineer",
+        "Construction Manager",
+        "Surveyor",
+        "Heavy Equipment Operator",
+        "Paving Technician",
+        "Construction Laborer",
+        "Safety Manager",
+        "Materials Engineer",
+        "Environmental Engineer",
+        "Transportation Engineer",
+        "Construction Worker",
+        "Road Maintenance Worker",
+        "Equipment Operator Assistant",
+        "Laborer",
+        "Construction Technician",
+      ];
+
       const jobs = [];
 
       for (let i = 0; i < batchSize; i++) {
         jobs.push({
-          title: faker.person.jobTitle(),
+          title: roadConstructionJobs[i],
           description: faker.lorem.paragraph(),
         });
       }
 
       await JobModel.insertMany(jobs);
-      logger.info(batchSize + " jobs seeded successfully.");
+      logger.info(`${batchSize} jobs seeded successfully.`);
     } catch (error: any) {
-      logger.error("Failed to seed jobs: " + error.message);
+      logger.error(`Failed to seed jobs: ${error.message}`);
     }
   };
 

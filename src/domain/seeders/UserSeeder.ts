@@ -31,8 +31,11 @@ export class UserSeeder {
         roleId: faker.helpers.arrayElement(roles).id,
         password: faker.internet.password(),
         lastActivity: faker.number.int(),
-        nationalId: faker.number.int({ min: 1000000000, max: 9999999999 }), // Assuming national ID is a 10-digit number
+        nationalId: faker.number.int({ min: 1000000000, max: 9999999999 }),
+        permissions: [], 
       }));
+      
+ 
 
       await UserModel.insertMany(users);
       logger.info(`${batchSize} users seeded successfully.`);
