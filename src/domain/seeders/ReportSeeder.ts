@@ -1,15 +1,15 @@
 import { faker } from "@faker-js/faker";
 import logger from "../../utils/helpers/logger";
+import ReportModel from "../models/ReportModel";
 import ReportSubjectModel from "../models/ReportSubjectModel";
 import ProjectGalleryModel from "../models/ProjectGalleryModel";
 import ProjectModel from "../models/ProjectModel";
 import UserModel from "../models/UserModel";
-import DailyReportModel from "../models/DailyReportModel";
 
-export class DailyReportSeeder {
-  static removeAllDailyReportS = async () => {
+export class ReportSeeder {
+  static removeAllReports = async () => {
     try {
-      await DailyReportModel.deleteMany({});
+      await ReportModel.deleteMany({});
       logger.info("All reports removed successfully.");
     } catch (error: any) {
       logger.error(`Failed to remove reports: ${error.message}`);
@@ -38,39 +38,35 @@ export class DailyReportSeeder {
     }
   };
 
-  static insertDailyReportS = async (batchSize = 5) => {
+  static insertReports = async (batchSize = 10) => {
     try {
       const { reportSubjects, projectGalleries, projects, users } =
         await this.fetchRequiredData();
 
       const reports = [];
 
-      for (let i = 0; i < projects.length; i++) {
-        for (let i = 0; i < batchSize; i++) {
-          const randomReportSubject =
-            reportSubjects[Math.floor(Math.random() * reportSubjects.length)];
-          const randomProjectGallery =
-            projectGalleries[
-              Math.floor(Math.random() * projectGalleries.length)
-            ];
-          const randomProject =
-            projects[Math.floor(Math.random() * projects.length)];
-          const randomUser = users[Math.floor(Math.random() * users.length)];
+      for (let i = 0; i < batchSize; i++) {
+        const randomReportSubject =
+          reportSubjects[Math.floor(Math.random() * reportSubjects.length)];
+        const randomProjectGallery =
+          projectGalleries[Math.floor(Math.random() * projectGalleries.length)];
+        const randomProject =
+          projects[Math.floor(Math.random() * projects.length)];
+        const randomUser = users[Math.floor(Math.random() * users.length)];
 
-          reports.push({
-            title: faker.lorem.words(5),
-            reportSubjectId: randomReportSubject.id,
-            description: faker.lorem.paragraph(),
-            reportDate: faker.date.past(),
-            reportTime: faker.date.past().toLocaleTimeString("en-US"),
-            projectGalleryId: [randomProjectGallery.id],
-            projectId: randomProject.id,
-            createdBy: randomUser.id,
-          });
-        }
+        reports.push({
+          title: faker.lorem.words(5),
+          reportSubjectId: randomReportSubject.id,
+          description: faker.lorem.paragraph(),
+          reportDate: faker.date.past(),
+          reportTime: faker.date.past().toLocaleTimeString("en-US"),
+          projectGalleryId: [randomProjectGallery.id],
+          projectId: randomProject.id,
+          createdBy: randomUser.id,
+        });
       }
 
-      await DailyReportModel.insertMany(reports);
+      await ReportModel.insertMany(reports);
       logger.info(`${reports.length} reports seeded successfully.`);
     } catch (error: any) {
       logger.error(`Failed to seed reports: ${error.message}`);
@@ -78,7 +74,7 @@ export class DailyReportSeeder {
   };
 
   static seed = async () => {
-    await this.removeAllDailyReportS();
-    await this.insertDailyReportS();
+    await this.removeAllReports();
+    await this.insertReports();
   };
 }

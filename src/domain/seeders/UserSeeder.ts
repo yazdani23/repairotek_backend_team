@@ -13,7 +13,7 @@ export class UserSeeder {
     }
   };
 
-  static insertUsers = async (batchSize = 10) => {
+  static insertUsers = async (batchSize = 20) => {
     try {
       const roles = await RoleModel.find({});
       if (roles.length === 0)

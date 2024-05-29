@@ -12,26 +12,38 @@ import { EmployeeSeeder } from "./EmployeeSeeder";
 import { AdminSeeder } from "./AdminSeeder";
 import { JobSeeder } from "./JobSeeder";
 import { ZoneSeeder } from "./ZoneSeeder";
-
+import { AssetsSeeder } from "./AssetsSeeder";
+import { ReportSubjectSeeder } from "./ReportSubjectSeeder";
+import { ProjectGallerySubjectSeeder } from "./ProjectGallerySubjectSeeder";
+import { ProjectGallerySeeder } from "./ProjectGallerySeeder";
+import { DailyReportSeeder } from "./DailyReportSeeder";
+import { DamageEquipmentReportSeeder } from "./DamageEquipmentReportModelSeeder";
+import { InjuryEmployeeReportSeeder } from "./InjuryEmployeeReportSeeder";
 
 const seedDatabase = async () => {
   try {
-    await connectDB()
+    await connectDB();
 
-    await RoleSeeder.seed();
-    await ResourceSeeder.seed();
-    await JobSeeder.seed();
+    // await RoleSeeder.seed();
+    // await ResourceSeeder.seed();
+    // await JobSeeder.seed();
 
-    await EmployeeSeeder.seed();
-    await AdminSeeder.seed();
-    await PermissionSeeder.seed();
+    // await AdminSeeder.seed();
+    // await EmployeeSeeder.seed();
+    // await PermissionSeeder.seed();
 
-    // await ZoneSeeder.seed();
-    await MaterialSeeder.seed();
-    await EquipmentSeeder.seed();
+    // await MaterialSeeder.seed();
+    // await EquipmentSeeder.seed();
 
-    await ProjectSeeder.seed();
-    
+    // await ProjectSeeder.seed();
+    // await AssetsSeeder.seed();
+
+    // await ReportSubjectSeeder.seed();
+    // await ProjectGallerySubjectSeeder.seed();
+    // await ProjectGallerySeeder.seed();
+    // await DailyReportSeeder.seed();
+    // await DamageEquipmentReportSeeder.seed();
+    // await InjuryEmployeeReportSeeder.seed();
 
     logger.info("Database seeding completed successfully");
   } catch (error) {

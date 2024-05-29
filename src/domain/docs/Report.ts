@@ -8,4 +8,5 @@ export interface ReportDoc extends Document {
   reportTime: string;
   projectGalleryId: Schema.Types.ObjectId[];
   projectId: Schema.Types.ObjectId;
+  createdBy: Schema.Types.ObjectId;
 }

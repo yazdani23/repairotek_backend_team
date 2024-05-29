@@ -1,2 +1,2 @@
-export const ContractType = ["Permanent", "Temporary", "Contract"];
+export const ContractType = ["Permanent", "Temporary", "Contract","Other"];
 

@@ -18,17 +18,19 @@ export class PermissionSeeder {
   static insertPermissions = async () => {
     try {
       const users = await UserModel.find({}).populate("roleId");
-      
       const resources = await ResourceModel.find({});
+
       if (users.length === 0)
         throw new Error("No users found in the database.");
       if (resources.length === 0)
         throw new Error("No resources found in the database.");
 
-      const permissions: any[] = [];
+      let counter=0
 
-      users.forEach((user) => {
-        resources.forEach((resource) => {
+      for (const user of users) {
+        const permissionsUser: any[] = [];
+
+        for (const resource of resources) {
           let canRead, canWrite, canEdit, canDelete;
 
           if (user.roleId && (user.roleId as RoleDoc).name === "Admin") {
@@ -43,7 +45,7 @@ export class PermissionSeeder {
             canDelete = faker.datatype.boolean();
           }
 
-          permissions.push({
+          const permission = new PermissionModel({
             userId: user.id,
             resourceId: resource.id,
             canRead,
@@ -51,11 +53,18 @@ export class PermissionSeeder {
             canEdit,
             canDelete,
           });
-        });
-      });
 
-      await PermissionModel.insertMany(permissions);
-      logger.info(`${permissions.length} permissions seeded successfully.`);
+          await permission.save();
+          permissionsUser.push(permission.id);
+          counter++
+        }
+
+        user.permissions = permissionsUser;
+        await user.save();
+      }
+
+     
+      logger.info(`${counter} permissions seeded successfully.`);
     } catch (error: any) {
       logger.error(`Failed to seed permissions: ${error.message}`);
     }
