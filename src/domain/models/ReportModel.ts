@@ -2,8 +2,6 @@ import { ReportDoc } from "../docs/Report";
 import { generateSchema } from "../../utils/generators/modelGenerator";
 import { Schema } from "mongoose";
 
-const types = ["Daily", "Injury Employee", "Damage Equipment"];
-
 const ReportModel = generateSchema<ReportDoc>("Report", {
   title: { type: String, required: true },
   reportSubjectId: {
@@ -22,6 +20,7 @@ const ReportModel = generateSchema<ReportDoc>("Report", {
     ref: "Project",
     required: true,
   },
+  createdBy: { type: Schema.Types.ObjectId, ref: "User", required: true },
 });
 
 export default ReportModel;

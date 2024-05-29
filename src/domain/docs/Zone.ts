@@ -2,10 +2,16 @@ import { Document, Schema } from "mongoose";
 
 export interface ZoneDoc extends Document {
   name: string;
-  provinceId: Schema.Types.ObjectId; // Array of province ObjectIds
+  provinceId: Schema.Types.ObjectId;
   state: string;
-  roadWay: string;
-  longitude: number;
-  latitude: number;
-  description: string;
+  roadWay: {
+    name: string;
+    status: "good" | "average" | "poor";
+    traffic?: "low" | "medium" | "high";
+  };
+  location: {
+    type: string;
+    coordinates: [number, number];
+  };
+  description?: string;
 }

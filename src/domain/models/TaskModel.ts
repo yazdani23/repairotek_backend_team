@@ -1,13 +1,8 @@
 
 import { TaskDoc } from "../docs/Task";
 import { generateSchema } from "../../utils/generators/modelGenerator";
+import { TaskStatus } from "../../utils/constant/enums/StatusTask";
 
-enum TaskStatus {
-  Pending = "Pending",
-  InProgress = "In Progress",
-  Completed = "Completed",
-  OnHold = "On Hold",
-}
 const TaskModel = generateSchema<TaskDoc>("Task", {
   title: {
     type: String,

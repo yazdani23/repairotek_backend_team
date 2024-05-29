@@ -1,7 +1,7 @@
 import { generateSchema } from "../../utils/generators/modelGenerator";
 import { EquipmentDoc } from "../docs/Equipment";
 
-const EquipmentModel = generateSchema<EquipmentDoc>("EquipmentType", {
+const EquipmentModel = generateSchema<EquipmentDoc>("Equipment", {
   name: { type: String, required: true },
   equipmentModel: { type: String, required: true },
   description: { type: String, required: true },

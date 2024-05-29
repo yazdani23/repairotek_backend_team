@@ -12,8 +12,8 @@ const ProjectGalleryModel = generateSchema<ProjectGalleryDoc>(
     mediaDateTime: { type: String, required: false },
     mediaSubjectId: {
       type: Schema.Types.ObjectId,
-      ref: "MediaSubject",
-      required: true,
+      ref: "ProjectGallerySubject",
+      required: false,
     },
     location: { type: String, required: false },
     description: { type: String },
@@ -21,4 +21,3 @@ const ProjectGalleryModel = generateSchema<ProjectGalleryDoc>(
 );
 
 export default ProjectGalleryModel;
- 
