@@ -19,6 +19,8 @@ import { ProjectGallerySeeder } from "./ProjectGallerySeeder";
 import { DailyReportSeeder } from "./DailyReportSeeder";
 import { DamageEquipmentReportSeeder } from "./DamageEquipmentReportModelSeeder";
 import { InjuryEmployeeReportSeeder } from "./InjuryEmployeeReportSeeder";
+import { TaskSeeder } from "./TaskSeeder";
+import { TimeCardEmployeeSeeder } from "./TimeCardEmployeeSeeder";
 
 const seedDatabase = async () => {
   try {
@@ -41,9 +43,13 @@ const seedDatabase = async () => {
     // await ReportSubjectSeeder.seed();
     // await ProjectGallerySubjectSeeder.seed();
     // await ProjectGallerySeeder.seed();
+
     // await DailyReportSeeder.seed();
     // await DamageEquipmentReportSeeder.seed();
     // await InjuryEmployeeReportSeeder.seed();
+
+    // await TaskSeeder.seed();
+    await TimeCardEmployeeSeeder.seed();
 
     logger.info("Database seeding completed successfully");
   } catch (error) {
