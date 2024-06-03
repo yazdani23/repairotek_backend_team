@@ -1,9 +1,10 @@
 import { Document, Schema } from "mongoose";
 
 export interface PermissionDoc extends Document {
-  name: string;
-  description: string;
-  resource: string;
-  action: string;
-  roleIds: [Schema.Types.ObjectId];
+  userId: Schema.Types.ObjectId;
+  resourceId: Schema.Types.ObjectId;
+  canRead: boolean;
+  canWrite: boolean;
+  canEdit: boolean;
+  canDelete: boolean;
 }

@@ -1,0 +1,40 @@
+Models:
+
+AdminModel
+AssetsModel
+CountryModel
+DailyReportModel
+DamageEquipmentReportModel
+EmployeeModel
+EquipmentModel
+InjuryEmployeeReportModel
+JobModel
+MaterialModel
+PermissionsModel
+ProjectAssignmentModel
+ProjectCostModel
+ProjectGalleryModel
+ProjectModel
+ProvinceModel
+ReportModel
+ReportSubjectModel
+ResourceModel
+RoleModel
+TaskModel
+TimeCardEmployeeModel
+UserModel
+ZoneModel
+
+-------------
+Resources:
+
+Projects 
+Daily Reports
+Damage Equipment Reports
+Injury Employee Reports
+Employees  
+Equipments
+Materials  
+Project Gallery 
+Tasks
+Time Card

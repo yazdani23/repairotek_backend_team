@@ -1,6 +1,7 @@
 import { faker } from "@faker-js/faker";
 import logger from "../../utils/helpers/logger";
 import RoleModel from "../models/RoleModel";
+import { RoleNames } from "../../utils/constant/RoleNames";
 
 export class RoleSeeder {
  
@@ -15,26 +16,18 @@ export class RoleSeeder {
 
   static insertRoles = async () => {
     try {
-      const roleNames = [
-        "Administrator",
-        "Editor",
-        "Viewer",
-        "Moderator",
-        "Contributor",
-        "Manager",
-        "Operator",
-        "Analyst",
-        "Coordinator",
-        "Consultant",
-      ];
 
-      const roles = Array.from({ length: roleNames.length }, () => ({
-        name: faker.helpers.arrayElement(roleNames),
-        description: faker.lorem.sentence(),
-      }));
+      
+       const roles = [];
+       for (let i = 0; i < RoleNames.length; i++) {
+         roles.push({
+           name: RoleNames[i],
+           description: faker.lorem.sentence(),
+         });
+       }
 
       await RoleModel.insertMany(roles);
-      logger.info(`${roleNames.length} roles seeded successfully.`);
+      logger.info(`${RoleNames.length} roles seeded successfully.`);
     } catch (error: any) {
       logger.error(`Failed to seed roles: ${error.message}`);
     }

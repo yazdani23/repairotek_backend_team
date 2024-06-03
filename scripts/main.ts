@@ -86,8 +86,8 @@ program
     ]);
   });
 program
-  .command("make:route <name>")
-  .description("Create a new route")
+  .command("make:router <name>")
+  .description("Create a new router")
   .action(async (name) => {
     await generateFiles(name, [
       async (resourceNameUC, resourceNameLC) =>
@@ -129,6 +129,8 @@ program
       async (resourceNameUC) => await generateDocFile(resourceNameUC),
       async (resourceNameUC) => await generateValidationFile(resourceNameUC),
       async (resourceNameUC) => await generateModelFile(resourceNameUC),
+      async (resourceNameUC, resourceNameLC) =>
+        await generateSeederFile(resourceNameUC, resourceNameLC!),
     ]);
   });
 

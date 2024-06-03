@@ -1,11 +1,19 @@
-
 import { generateSchema } from "../../utils/generators/modelGenerator";
 import { MaterialDoc } from "../docs/Material";
+
+// enum Unit {
+//   Gram = "gr",
+//   Kilogram = "Kg",
+//   Ton = "Tone",
+// }
+const Unit = ["gr", "Kg", "Tone"];
 
 const MaterialModel = generateSchema<MaterialDoc>("material", {
   name: { type: String, required: true },
   description: { type: String, required: true },
-  price: { type: Number, required: false, default: 0 },
+  pricePerUnit: { type: Number, required: false, default: 0, min: 0 },
+  value: { type: Number, required: true, default: 0, min: 0 },
+  unit: { type: String, enum: Unit, required: true, default: "" },
 });
 
 export default MaterialModel;
