@@ -13,6 +13,7 @@ import zoneRouter from "./zoneRouter";
 // import userZoneRouter from "./userZoneRouter";
 import permissionRouter from "./permissionRouter";
 import galleryRouter from "./galleryRouter";
+import adminRouter from "./adminRouter";
 
 const indexRouter = express.Router();
 // const { index, notFound } = require("../controllers/indexController");
@@ -20,6 +21,7 @@ const indexRouter = express.Router();
 
 
 indexRouter.use(authRouter);
+indexRouter.use(adminRouter);
 indexRouter.use(userRouter);
 indexRouter.use(projectRouter);
 indexRouter.use(employeeRouter);
