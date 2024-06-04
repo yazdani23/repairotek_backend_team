@@ -10,6 +10,8 @@ class BaseController<T> implements Controller<T> {
   getAll = async (req: Request, res: Response): Promise<Response> => {
     try {
       const resources = await this.service.getAll();
+      // console.log(resources);
+      
       return res.status(200).json(resources);
     } catch (error) {
       console.error(error);

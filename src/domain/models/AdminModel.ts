@@ -7,6 +7,6 @@ import UserModel from "./UserModel";
 const AdminSchema = new Schema<AdminDoc>({});
 // toJsonSchema(AdminSchema);
 
-const AdminModel = UserModel.discriminator("AdminModel", AdminSchema);
+const AdminModel = UserModel.discriminator("Admin", AdminSchema);
 
 export default AdminModel;
