@@ -26,27 +26,27 @@ const seedDatabase = async () => {
   try {
     await connectDB();
 
-    // await RoleSeeder.seed();
-    // await ResourceSeeder.seed();
-    // await JobSeeder.seed();
+    await RoleSeeder.seed();
+    await ResourceSeeder.seed();
+    await JobSeeder.seed();
 
-    // await AdminSeeder.seed();
-    // await EmployeeSeeder.seed();
-    // await PermissionSeeder.seed();
+    await AdminSeeder.seed();
+    await EmployeeSeeder.seed();
+    await PermissionSeeder.seed();
 
-    // await MaterialSeeder.seed();
-    // await EquipmentSeeder.seed();
+    await MaterialSeeder.seed();
+    await EquipmentSeeder.seed();
 
-    // await ProjectSeeder.seed();
-    // await AssetsSeeder.seed();
+    await ProjectSeeder.seed();
+    await AssetsSeeder.seed();
 
-    // await ReportSubjectSeeder.seed();
-    // await ProjectGallerySubjectSeeder.seed();
-    // await ProjectGallerySeeder.seed();
+    await ReportSubjectSeeder.seed();
+    await ProjectGallerySubjectSeeder.seed();
+    await ProjectGallerySeeder.seed();
 
-    // await DailyReportSeeder.seed();
-    // await DamageEquipmentReportSeeder.seed();
-    // await InjuryEmployeeReportSeeder.seed();
+    await DailyReportSeeder.seed();
+    await DamageEquipmentReportSeeder.seed();
+    await InjuryEmployeeReportSeeder.seed();
 
     await TaskSeeder.seed();
     await TimeCardEmployeeSeeder.seed();
